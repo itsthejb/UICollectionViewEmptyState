@@ -38,8 +38,8 @@
 		4962683C17422F5E00B77E50 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		4962683E17422F5E00B77E50 /* DemoController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DemoController.h; sourceTree = "<group>"; };
 		4962683F17422F5E00B77E50 /* DemoController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DemoController.m; sourceTree = "<group>"; };
-		49626846174230E700B77E50 /* UICollectionView+EmptyState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UICollectionView+EmptyState.h"; path = "Library/UICollectionView+EmptyState.h"; sourceTree = SOURCE_ROOT; };
-		49626847174230E700B77E50 /* UICollectionView+EmptyState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UICollectionView+EmptyState.m"; path = "Library/UICollectionView+EmptyState.m"; sourceTree = SOURCE_ROOT; };
+		49626846174230E700B77E50 /* UICollectionView+EmptyState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UICollectionView+EmptyState.h"; sourceTree = "<group>"; };
+		49626847174230E700B77E50 /* UICollectionView+EmptyState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UICollectionView+EmptyState.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,7 +59,7 @@
 		4962681717422F5E00B77E50 = {
 			isa = PBXGroup;
 			children = (
-				49626849174230E900B77E50 /* Library */,
+				49626849174230E900B77E50 /* UICollectionViewEmptyState */,
 				4962682917422F5E00B77E50 /* Demo */,
 				4962682217422F5E00B77E50 /* Frameworks */,
 				4962682117422F5E00B77E50 /* Products */,
@@ -111,13 +111,12 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		49626849174230E900B77E50 /* Library */ = {
+		49626849174230E900B77E50 /* UICollectionViewEmptyState */ = {
 			isa = PBXGroup;
 			children = (
 				49626846174230E700B77E50 /* UICollectionView+EmptyState.h */,
 				49626847174230E700B77E50 /* UICollectionView+EmptyState.m */,
 			);
-			name = Library;
 			path = UICollectionViewEmptyState;
 			sourceTree = "<group>";
 		};
