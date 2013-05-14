@@ -14,12 +14,12 @@
 #import "BlocksKit.h"
 
 @interface SpecController1 : UICollectionViewController
+@property (nonatomic, assign) NSUInteger numberOfSections;
+@property (nonatomic, assign) NSUInteger numberOfSectionItems;
 @end
 @implementation SpecController1
 - (void)viewDidLoad {
   [super viewDidLoad];
-  [self.collectionView registerClass:[UICollectionViewCell class]
-          forCellWithReuseIdentifier:@"Foo"];
 }
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
   return 1;
@@ -58,15 +58,22 @@ describe(@"simple case", ^{
     [controller loadView];
     expect(controller.isViewLoaded).to.beTruthy;
     expect(controller.collectionView).toNot.beNil;
+
+    [controller.collectionView registerClass:[UICollectionViewCell class]
+            forCellWithReuseIdentifier:@"Foo"];
+
     controller.collectionView.emptyState_view = emptyView;
     [controller.collectionView reloadData];
+    [controller.collectionView layoutSubviews];
   });
   after(^{
     controller = nil;
+    layout = nil;
+    emptyView = nil;
   });
 
-  it(@"should display overlay", ^{
-    expect(YES).to.beTruthy;
+  it(@"should not display overlay", ^{
+    expect(emptyView.superview).toNot.equal(controller.collectionView);
   });
 
 });
