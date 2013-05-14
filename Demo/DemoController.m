@@ -13,6 +13,7 @@
 @interface DemoController ()
 @property (strong, nonatomic) IBOutlet UIStepper *sectionStepper;
 @property (strong, nonatomic) IBOutlet UIStepper *itemStepper;
+@property (strong, nonatomic) IBOutlet UILabel *emptyView;
 @end
 
 @implementation DemoController
@@ -33,6 +34,9 @@
                         [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil],
                         [[UIBarButtonItem alloc] initWithCustomView:self.itemStepper]
                         ];
+
+  self.emptyView.frame = self.collectionView.bounds;
+  [self.collectionView addSubview:self.emptyView];
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {

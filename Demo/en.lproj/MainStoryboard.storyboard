@@ -68,6 +68,7 @@
                     </collectionView>
                     <navigationItem key="navigationItem" id="FgK-0j-hH5"/>
                     <connections>
+                        <outlet property="emptyView" destination="zYO-CC-cA0" id="vad-Uv-2O2"/>
                         <outlet property="itemStepper" destination="5cQ-Gh-SAL" id="1Vc-Xz-2jl"/>
                         <outlet property="sectionStepper" destination="hBY-W8-ubv" id="btV-ne-6tw"/>
                     </connections>
@@ -81,6 +82,14 @@
                     <rect key="frame" x="0.0" y="0.0" width="94" height="27"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                 </stepper>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Empty View" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="zYO-CC-cA0" userLabel="Empty view">
+                    <rect key="frame" x="0.0" y="0.0" width="42" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="0.5" colorSpace="calibratedRGB"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="60"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </objects>
             <point key="canvasLocation" x="566" y="-201"/>
         </scene>
@@ -121,6 +130,7 @@
         <class className="DemoController" superclassName="UICollectionViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DemoController.h"/>
             <relationships>
+                <relationship kind="outlet" name="emptyView" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="itemStepper" candidateClass="UIStepper"/>
                 <relationship kind="outlet" name="sectionStepper" candidateClass="UIStepper"/>
             </relationships>
