@@ -16,7 +16,9 @@
 /** 
  If YES and section 0 contains a supplementary header view,
  don't overlay it. Useful if you have important controls in
- this header
+ this header. Note that no supplementary views are displayed
+ on a collection view at all if numberOfSectionsInCollectionView
+ is 0.
  */
 @property (nonatomic, assign) BOOL emptyState_shouldRespectSectionHeader;
 

@@ -34,6 +34,8 @@
 		49AB916517424D3D00A105F0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4962682517422F5E00B77E50 /* Foundation.framework */; };
 		49AB916B17424D3D00A105F0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 49AB916917424D3D00A105F0 /* InfoPlist.strings */; };
 		49AB916E17424D3D00A105F0 /* Spec1.m in Sources */ = {isa = PBXBuildFile; fileRef = 49AB916D17424D3D00A105F0 /* Spec1.m */; };
+		49AB917417425BE900A105F0 /* UICollectionView+EmptyState.m in Sources */ = {isa = PBXBuildFile; fileRef = 49626847174230E700B77E50 /* UICollectionView+EmptyState.m */; };
+		49AB917517425BFC00A105F0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4962682717422F5E00B77E50 /* CoreGraphics.framework */; };
 		BF8D4C1E083A4F16AF4AFF01 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 70E28A7E23024606B34D88C3 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -94,6 +96,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49AB917517425BFC00A105F0 /* CoreGraphics.framework in Frameworks */,
 				49AB916317424D3D00A105F0 /* SenTestingKit.framework in Frameworks */,
 				49AB916417424D3D00A105F0 /* UIKit.framework in Frameworks */,
 				49AB916517424D3D00A105F0 /* Foundation.framework in Frameworks */,
@@ -213,8 +216,8 @@
 		49AB917317424E4700A105F0 /* CocoaPods */ = {
 			isa = PBXGroup;
 			children = (
-				3398EDC38F3F4F5C8BEC3202 /* Pods.xcconfig */,
 				49AB913F17423D2E00A105F0 /* Podfile */,
+				3398EDC38F3F4F5C8BEC3202 /* Pods.xcconfig */,
 				B19C143EA6134B42A4F8E236 /* Pods-Tests.xcconfig */,
 			);
 			name = CocoaPods;
@@ -411,6 +414,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				49AB916E17424D3D00A105F0 /* Spec1.m in Sources */,
+				49AB917417425BE900A105F0 /* UICollectionView+EmptyState.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -530,6 +534,7 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Tests/Tests-Prefix.pch";
+				GCC_WARN_UNUSED_VALUE = NO;
 				INFOPLIST_FILE = "Tests/Tests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = octest;
@@ -542,6 +547,7 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Tests/Tests-Prefix.pch";
+				GCC_WARN_UNUSED_VALUE = NO;
 				INFOPLIST_FILE = "Tests/Tests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = octest;
