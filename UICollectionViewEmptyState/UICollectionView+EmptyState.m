@@ -26,10 +26,10 @@ SYNTHESIZE_ASC_PRIMITIVE(emptyState_hideAnimationDuration,
 SYNTHESIZE_ASC_PRIMITIVE(emptyState_shouldRespectSectionHeader,
                          setEmptyState_shouldRespectSectionHeader,
                          BOOL)
-SYNTHESIZE_ASC_OBJ_ASSIGN_BLOCK(emptyState_view,
-                                setEmptyState_view,
-                                ^{},
-                                ^
+SYNTHESIZE_ASC_OBJ_BLOCK(emptyState_view,
+                         setEmptyState_view,
+                         ^{},
+                         ^
 {
   static BOOL __segue_swizzled = NO;
   if (!__segue_swizzled) {
