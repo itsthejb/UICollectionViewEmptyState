@@ -75,6 +75,7 @@
 		49AB916A17424D3D00A105F0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		49AB916D17424D3D00A105F0 /* Spec1.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Spec1.m; sourceTree = "<group>"; };
 		49AB916F17424D3D00A105F0 /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
+		49AB917717428D3B00A105F0 /* UICollectionViewEmptyState.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = UICollectionViewEmptyState.podspec; sourceTree = "<group>"; };
 		50D6B30A078F4D1EBDC8407E /* libPods-Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		70E28A7E23024606B34D88C3 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B19C143EA6134B42A4F8E236 /* Pods-Tests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests.xcconfig"; path = "Pods/Pods-Tests.xcconfig"; sourceTree = SOURCE_ROOT; };
@@ -217,6 +218,7 @@
 			isa = PBXGroup;
 			children = (
 				49AB913F17423D2E00A105F0 /* Podfile */,
+				49AB917717428D3B00A105F0 /* UICollectionViewEmptyState.podspec */,
 				3398EDC38F3F4F5C8BEC3202 /* Pods.xcconfig */,
 				B19C143EA6134B42A4F8E236 /* Pods-Tests.xcconfig */,
 			);
