@@ -45,7 +45,9 @@ SYNTHESIZE_ASC_OBJ_ASSIGN_BLOCK(emptyState_view,
   [self __empty_layoutSubviews_original];
 
   NSUInteger totalItems = 0;
-  for (NSUInteger section = 0; section < [self.dataSource numberOfSectionsInCollectionView:self]; ++section) {
+  NSUInteger numberOfSections = [self.dataSource numberOfSectionsInCollectionView:self];
+
+  for (NSUInteger section = 0; section < numberOfSections; ++section) {
     totalItems += [self.dataSource collectionView:self numberOfItemsInSection:section];
   }
 
@@ -57,25 +59,34 @@ SYNTHESIZE_ASC_OBJ_ASSIGN_BLOCK(emptyState_view,
       [self.emptyState_view removeFromSuperview];
     }];
   } else if (!totalItems && !self.emptyState_view.superview) {
+
     // show
     CGRect bounds = self.bounds;
 
+    id <UICollectionViewDelegateFlowLayout> delegate = (id) self.delegate;
+
+    // don't overlay header?
     if (self.emptyState_shouldRespectSectionHeader) {
-      // reveal the first section's supplementary view
-      id <UICollectionViewDelegateFlowLayout> delegate = (id) self.delegate;
-      CGSize size = [delegate collectionView:self
-                                      layout:self.collectionViewLayout
-             referenceSizeForHeaderInSection:0];
 
-      //
-      CGRect slice;
-      CGRectDivide(bounds, &slice, &bounds, size.height, CGRectMinYEdge);
-      self.emptyState_view.frame = bounds;
+      // is there actually a header to be displayed?
+      if (numberOfSections &&
+          [self.dataSource collectionView:self
+        viewForSupplementaryElementOfKind:UICollectionElementKindSectionHeader
+                              atIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]])
+      {
+        // reveal the first section's supplementary view
+        CGSize size = [delegate collectionView:self
+                                        layout:self.collectionViewLayout
+               referenceSizeForHeaderInSection:0];
 
-    } else {
-      // cover entire collection view
-      self.emptyState_view.frame = bounds;
+        //
+        CGRect slice;
+        CGRectDivide(bounds, &slice, &bounds, size.height, CGRectMinYEdge);
+        self.emptyState_view.frame = bounds;
+      }
     }
+
+    self.emptyState_view.frame = bounds;
 
     self.emptyState_view.alpha = 0.0;
     [self addSubview:self.emptyState_view];
