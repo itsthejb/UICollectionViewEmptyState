@@ -13,10 +13,7 @@ Pod::Spec.new do |s|
   s.homepage      = 'https://bitbucket.org/joncrooke/uicollectionviewemptyview'
   s.platform      = :ios, '6.0'
   s.requires_arc  = true
-  s.source        = {
-    :git => 'https://joncrooke@bitbucket.org/joncrooke/uicollectionviewemptyview.git',
-    :branch => 'develop'
-  }
+  s.source       = { :git => "https://joncrooke@bitbucket.org/joncrooke/uicollectionviewemptyview.git", :branch => "develop" }
   s.source_files = 'UICollectionViewEmptyState/*.{h,m}'
 end
 
