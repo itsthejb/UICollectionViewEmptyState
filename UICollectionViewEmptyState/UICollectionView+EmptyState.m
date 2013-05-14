@@ -17,7 +17,20 @@
 
 @implementation UICollectionView (EmptyState)
 
-SYNTHESIZE_ASC_OBJ_ASSIGN_BLOCK(emptyStateView, setEmptyStateView, ^{}, ^{
+SYNTHESIZE_ASC_PRIMITIVE(emptyState_showAnimationDuration,
+                         setEmptyState_showAnimationDuration,
+                         NSTimeInterval)
+SYNTHESIZE_ASC_PRIMITIVE(emptyState_hideAnimationDuration,
+                         setEmptyState_hideAnimationDuration,
+                         NSTimeInterval)
+SYNTHESIZE_ASC_PRIMITIVE(emptyState_shouldRespectSectionHeader,
+                         setEmptyState_shouldRespectSectionHeader,
+                         BOOL)
+SYNTHESIZE_ASC_OBJ_ASSIGN_BLOCK(emptyState_view,
+                                setEmptyState_view,
+                                ^{},
+                                ^
+{
   static BOOL __segue_swizzled = NO;
   if (!__segue_swizzled) {
     EXT_SWIZZLE_INSTANCE_METHODS(UICollectionView,
@@ -38,11 +51,26 @@ SYNTHESIZE_ASC_OBJ_ASSIGN_BLOCK(emptyStateView, setEmptyStateView, ^{}, ^{
 
   if (totalItems) {
     // remove
-    [self.emptyStateView removeFromSuperview];
-  } else {
+    [UIView animateWithDuration:self.emptyState_hideAnimationDuration animations:^{
+      self.emptyState_view.alpha = 0.0;
+    } completion:^(BOOL finished) {
+      [self.emptyState_view removeFromSuperview];
+    }];
+  } else if (!totalItems && !self.emptyState_view.superview) {
     // show
-    self.emptyStateView.frame = self.bounds;
-    [self addSubview:self.emptyStateView];
+    if (self.emptyState_shouldRespectSectionHeader) {
+      // reveal the first section's supplementary view
+      
+    } else {
+      // cover entire collection view
+      self.emptyState_view.frame = self.bounds;
+    }
+
+    self.emptyState_view.alpha = 0.0;
+    [self addSubview:self.emptyState_view];
+    [UIView animateWithDuration:self.emptyState_showAnimationDuration animations:^{
+      self.emptyState_view.alpha = 1.0;
+    }];
   }
 }
 

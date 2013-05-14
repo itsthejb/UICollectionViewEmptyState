@@ -10,6 +10,9 @@
 
 @interface UICollectionView (EmptyState)
 
-@property (nonatomic, strong) UIView *emptyStateView;
+@property (nonatomic, strong) UIView *emptyState_view;
+@property (nonatomic, assign) BOOL emptyState_shouldRespectSectionHeader;
+@property (nonatomic, assign) NSTimeInterval emptyState_showAnimationDuration;
+@property (nonatomic, assign) NSTimeInterval emptyState_hideAnimationDuration;
 
 @end

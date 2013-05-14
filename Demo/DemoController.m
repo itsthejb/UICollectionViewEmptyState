@@ -49,7 +49,10 @@
                                                                       action:nil],
                         [[UIBarButtonItem alloc] initWithCustomView:self.itemStepper]];
 
-  self.collectionView.emptyStateView = self.emptyView;
+  // configure empty view
+  self.collectionView.emptyState_view = self.emptyView;
+  self.collectionView.emptyState_showAnimationDuration = 0.3;
+  self.collectionView.emptyState_hideAnimationDuration = 0.3;
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
@@ -62,9 +65,9 @@
   return self.itemStepper.value;
 }
 
-- (CGSize)collectionView:(UICollectionView *)collectionView
-                  layout:(UICollectionViewLayout *)collectionViewLayout
-referenceSizeForFooterInSection:(NSInteger)section
+- (CGSize)        collectionView:(UICollectionView *)collectionView
+                          layout:(UICollectionViewLayout *)collectionViewLayout
+ referenceSizeForFooterInSection:(NSInteger)section
 {
   if (self.decoratorSwitch.on) {
     return CGSizeMake(CGRectGetWidth(self.collectionView.frame), 50);
@@ -73,9 +76,9 @@ referenceSizeForFooterInSection:(NSInteger)section
   }
 }
 
-- (CGSize)collectionView:(UICollectionView *)collectionView
-                  layout:(UICollectionViewLayout *)collectionViewLayout
-referenceSizeForHeaderInSection:(NSInteger)section
+- (CGSize)        collectionView:(UICollectionView *)collectionView
+                          layout:(UICollectionViewLayout *)collectionViewLayout
+ referenceSizeForHeaderInSection:(NSInteger)section
 {
   if (self.decoratorSwitch.on) {
     return CGSizeMake(CGRectGetWidth(self.collectionView.frame), 50);
@@ -95,16 +98,12 @@ referenceSizeForHeaderInSection:(NSInteger)section
              UICollectionElementKindSectionFooter : @"Footer"};
   });
 
-  if (1 || self.decoratorSwitch.on) {
-    return [collectionView dequeueReusableSupplementaryViewOfKind:kind
-                                              withReuseIdentifier:dict[kind]
-                                                     forIndexPath:indexPath];
-  } else {
-    return nil;
-  }
+  return [collectionView dequeueReusableSupplementaryViewOfKind:kind
+                                            withReuseIdentifier:dict[kind]
+                                                   forIndexPath:indexPath];
 }
 
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView 
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
                   cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
   DemoCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"DemoCell" forIndexPath:indexPath];
