@@ -46,20 +46,15 @@ describe(@"simple case", ^{
     layout = [[UICollectionViewFlowLayout alloc] init];
     controller = [[SpecController1 alloc] initWithCollectionViewLayout:layout];
 
-    controller.numberOfSectionItems = 10;
-    controller.numberOfSections = 10;
-
     emptyView = [[UIView alloc] init];
-    [controller loadView];
-    expect(controller.isViewLoaded).to.beTruthy;
-    expect(controller.collectionView).toNot.beNil;
 
     [controller.collectionView registerClass:[UICollectionViewCell class]
             forCellWithReuseIdentifier:@"Foo"];
 
     controller.collectionView.emptyState_view = emptyView;
-    [controller.collectionView reloadData];
-    [controller.collectionView layoutSubviews];
+    expect(controller.collectionView.emptyState_view).to.equal(emptyView);
+
+    expect(controller.isViewLoaded).to.beTruthy;
   });
   after(^{
     controller = nil;
@@ -67,8 +62,18 @@ describe(@"simple case", ^{
     emptyView = nil;
   });
 
-  it(@"should not display overlay", ^{
+  it(@"should not display overlay with content", ^{
+    controller.numberOfSectionItems = 10;
+    controller.numberOfSections = 10;
+    [controller.collectionView layoutSubviews];
     expect(emptyView.superview).toNot.equal(controller.collectionView);
+  });
+
+  it(@"should display overlay with no content", ^{
+    controller.numberOfSectionItems = 0;
+    controller.numberOfSections = 0;
+    [controller.collectionView layoutSubviews];
+    expect(emptyView.superview).equal(controller.collectionView);
   });
 
 });
