@@ -1,5 +1,5 @@
 //
-//  Tests.h
+//  Tests.m
 //  Tests
 //
 //  Created by Jonathan Crooke on 14/05/2013.
@@ -7,7 +7,11 @@
 //
 
 #import <SenTestingKit/SenTestingKit.h>
+#import "TestPilot.h"
+#import "Specta.h"
 
-@interface Tests : SenTestCase
+SpecBegin(Spec1);
 
-@end
+SpecEnd
+
+

@@ -33,7 +33,7 @@
 		49AB916417424D3D00A105F0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4962682317422F5E00B77E50 /* UIKit.framework */; };
 		49AB916517424D3D00A105F0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4962682517422F5E00B77E50 /* Foundation.framework */; };
 		49AB916B17424D3D00A105F0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 49AB916917424D3D00A105F0 /* InfoPlist.strings */; };
-		49AB916E17424D3D00A105F0 /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 49AB916D17424D3D00A105F0 /* Tests.m */; };
+		49AB916E17424D3D00A105F0 /* Spec1.m in Sources */ = {isa = PBXBuildFile; fileRef = 49AB916D17424D3D00A105F0 /* Spec1.m */; };
 		BF8D4C1E083A4F16AF4AFF01 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 70E28A7E23024606B34D88C3 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -71,8 +71,7 @@
 		49AB916217424D3D00A105F0 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		49AB916817424D3D00A105F0 /* Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Tests-Info.plist"; sourceTree = "<group>"; };
 		49AB916A17424D3D00A105F0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		49AB916C17424D3D00A105F0 /* Tests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Tests.h; sourceTree = "<group>"; };
-		49AB916D17424D3D00A105F0 /* Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Tests.m; sourceTree = "<group>"; };
+		49AB916D17424D3D00A105F0 /* Spec1.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Spec1.m; sourceTree = "<group>"; };
 		49AB916F17424D3D00A105F0 /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
 		50D6B30A078F4D1EBDC8407E /* libPods-Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		70E28A7E23024606B34D88C3 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -195,8 +194,7 @@
 		49AB916617424D3D00A105F0 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				49AB916C17424D3D00A105F0 /* Tests.h */,
-				49AB916D17424D3D00A105F0 /* Tests.m */,
+				49AB916D17424D3D00A105F0 /* Spec1.m */,
 				49AB916717424D3D00A105F0 /* Supporting Files */,
 			);
 			path = Tests;
@@ -412,7 +410,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				49AB916E17424D3D00A105F0 /* Tests.m in Sources */,
+				49AB916E17424D3D00A105F0 /* Spec1.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
