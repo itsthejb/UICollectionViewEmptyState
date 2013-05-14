@@ -13,12 +13,12 @@
 
 #import "BlocksKit.h"
 
-@interface SpecController1 : UICollectionViewController <UICollectionViewDelegateFlowLayout>
+@interface SpecCollectionController : UICollectionViewController <UICollectionViewDelegateFlowLayout>
 @property (nonatomic, assign) NSUInteger numberOfSections;
 @property (nonatomic, assign) NSUInteger numberOfSectionItems;
 @property (nonatomic, assign) BOOL displaysSectionHeader;
 @end
-@implementation SpecController1
+@implementation SpecCollectionController
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
   return self.numberOfSections;
 }
@@ -52,17 +52,45 @@
 }
 @end
 
-SpecBegin(Spec1);
+#pragma mark -
+
+@interface SpecCallBackController : NSObject <UICollectionViewEmptyStateDelegate>
+@property (nonatomic, assign) BOOL didReceiveWillAddCallBack;
+@property (nonatomic, assign) BOOL didReceiveDidAddCallBack;
+@property (nonatomic, assign) BOOL didReceiveWillRemoveCallBack;
+@property (nonatomic, assign) BOOL didReceiveDidRemoveCallBack;
+@end
+@implementation SpecCallBackController
+- (void)collectionView:(UICollectionView *)collectionView didAddEmptyStateOverlayView:(UIView *)view {
+  self.didReceiveDidAddCallBack = YES;
+}
+- (void)collectionView:(UICollectionView *)collectionView didRemoveEmptyStateOverlayView:(UIView *)view {
+  self.didReceiveDidRemoveCallBack = YES;
+}
+- (void)collectionView:(UICollectionView *)collectionView willAddEmptyStateOverlayView:(UIView *)view animated:(BOOL)animated {
+  self.didReceiveWillAddCallBack = YES;
+}
+- (void)collectionView:(UICollectionView *)collectionView willRemoveEmptyStateOverlayView:(UIView *)view animated:(BOOL)animated
+{
+  self.didReceiveWillRemoveCallBack = YES;
+}
+@end
+
+#pragma mark -
+
+SpecBegin(Specs);
 
 describe(@"simple case", ^{
 
-  __block SpecController1 *controller = nil;
+  __block SpecCollectionController *controller = nil;
   __block UICollectionViewFlowLayout *layout = nil;
   __block UIView *emptyView = nil;
+  __block SpecCallBackController *callbacks = nil;
 
   before(^{
     layout = [[UICollectionViewFlowLayout alloc] init];
-    controller = [[SpecController1 alloc] initWithCollectionViewLayout:layout];
+    controller = [[SpecCollectionController alloc] initWithCollectionViewLayout:layout];
+    callbacks = [[SpecCallBackController alloc] init];
 
     emptyView = [[UIView alloc] init];
 
@@ -114,6 +142,37 @@ describe(@"simple case", ^{
                                     viewForSupplementaryElementOfKind:UICollectionElementKindSectionHeader
                                                           atIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]];
     expect(CGRectIntersectsRect(headerView.frame, emptyView.frame)).to.beFalsy;
+  });
+
+  it(@"should call delegate methods", ^{
+    controller.collectionView.emptyState_delegate = callbacks;
+    callbacks.didReceiveWillRemoveCallBack = NO;
+    callbacks.didReceiveWillAddCallBack = NO;
+    callbacks.didReceiveDidAddCallBack = NO;
+    callbacks.didReceiveDidRemoveCallBack = NO;
+
+    controller.numberOfSectionItems = 0;
+    controller.numberOfSections = 0;
+    [controller.collectionView layoutSubviews];
+
+    expect(callbacks.didReceiveWillAddCallBack).to.beTruthy;
+    expect(callbacks.didReceiveWillRemoveCallBack).to.beTruthy;
+    expect(callbacks.didReceiveDidAddCallBack).to.beFalsy;
+    expect(callbacks.didReceiveDidRemoveCallBack).to.beFalsy;
+
+    callbacks.didReceiveWillRemoveCallBack = NO;
+    callbacks.didReceiveWillAddCallBack = NO;
+    callbacks.didReceiveDidAddCallBack = NO;
+    callbacks.didReceiveDidRemoveCallBack = NO;
+
+    controller.numberOfSectionItems = 10;
+    controller.numberOfSections = 10;
+    [controller.collectionView layoutSubviews];
+
+    expect(callbacks.didReceiveWillAddCallBack).to.beFalsy;
+    expect(callbacks.didReceiveWillRemoveCallBack).to.beFalsy;
+    expect(callbacks.didReceiveDidAddCallBack).to.beTruthy;
+    expect(callbacks.didReceiveDidRemoveCallBack).to.beTruthy;
   });
 
 });

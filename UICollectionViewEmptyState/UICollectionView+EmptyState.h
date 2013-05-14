@@ -55,6 +55,7 @@
 #pragma mark -
 
 @protocol UICollectionViewEmptyStateDelegate <NSObject>
+@optional
 - (void)        collectionView:(UICollectionView*) collectionView
   willAddEmptyStateOverlayView:(UIView*) view
                       animated:(BOOL) animated;
