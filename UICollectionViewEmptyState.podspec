@@ -10,11 +10,11 @@ Pod::Spec.new do |s|
   s.dependency      'libextobjc/EXTSwizzle', '0.2.5'
   s.dependency      'ObjcAssociatedObjectHelpers', '1.1'
   s.dependency      'BlocksKit', '1.8.2'
-  s.homepage      = 'https://bitbucket.org/joncrooke/uicollectionviewemptyview'
+  s.homepage      = 'https://github.com/itsthejb/UICollectionViewEmptyState'
   s.platform      = :ios, '6.0'
   s.requires_arc  = true
-  s.source       = { :git => "https://joncrooke@bitbucket.org/joncrooke/uicollectionviewemptyview.git", :branch => "develop" }
+  s.source       = { 
+                    :git => "https://github.com/itsthejb/UICollectionViewEmptyState.git",
+                    :tag => "v" + s.version.to_s }
   s.source_files = 'UICollectionViewEmptyState/*.{h,m}'
 end
-
-    # :tag => "v" + s.version.to_s
