@@ -30,6 +30,20 @@ SYNTHESIZE_ASC_OBJ_ASSIGN_BLOCK(emptyStateView, setEmptyStateView, ^{}, ^{
 
 - (void) __empty_layoutSubviews {
   [self __empty_layoutSubviews_original];
+
+  NSUInteger totalItems = 0;
+  for (NSUInteger section = 0; section < [self.dataSource numberOfSectionsInCollectionView:self]; ++section) {
+    totalItems += [self.dataSource collectionView:self numberOfItemsInSection:section];
+  }
+
+  if (totalItems) {
+    // remove
+    [self.emptyStateView removeFromSuperview];
+  } else {
+    // show
+    self.emptyStateView.frame = self.bounds;
+    [self addSubview:self.emptyStateView];
+  }
 }
 
 @end
