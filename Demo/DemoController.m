@@ -118,7 +118,7 @@ referenceSizeForHeaderInSection:(NSInteger)section
                @"goose-1368497908c6H.jpg",
                @"sun-1368498327ZH8.jpg"];
   });
-  cell.imageView.image = [UIImage imageNamed:images[indexPath.section]];
+  cell.imageView.image = [UIImage imageNamed:images[indexPath.section % images.count]];
 
   return cell;
 }
