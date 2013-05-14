@@ -44,6 +44,16 @@ SYNTHESIZE_ASC_OBJ_ASSIGN_BLOCK(emptyState_view,
 - (void) __empty_layoutSubviews {
   [self __empty_layoutSubviews_original];
 
+  // only compatible with UICollectionViewDelegateFlowLayout right now...
+  if (self.emptyState_view &&
+      ![self.collectionViewLayout isKindOfClass:[UICollectionViewFlowLayout class]])
+  {
+    [NSException raise:@"UICollectionView+EmptyState Exception"
+                format:@"Only compatible with %@. Cannot be used with %@",
+     NSStringFromClass([UICollectionViewFlowLayout class]),
+     NSStringFromClass([self.collectionViewLayout class])];
+  }
+
   NSUInteger totalItems = 0;
   NSUInteger numberOfSections = [self.dataSource numberOfSectionsInCollectionView:self];
 
@@ -66,6 +76,7 @@ SYNTHESIZE_ASC_OBJ_ASSIGN_BLOCK(emptyState_view,
     CGRect bounds = self.bounds;
 
     id <UICollectionViewDelegateFlowLayout> delegate = (id) self.delegate;
+    UICollectionViewFlowLayout *layout = (id) self.collectionViewLayout;
 
     // don't overlay header?
     if (self.emptyState_shouldRespectSectionHeader) {
@@ -77,9 +88,13 @@ SYNTHESIZE_ASC_OBJ_ASSIGN_BLOCK(emptyState_view,
                               atIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]])
       {
         // reveal the first section's supplementary view
-        CGSize size = [delegate collectionView:self
-                                        layout:self.collectionViewLayout
-               referenceSizeForHeaderInSection:0];
+        CGSize size = layout.headerReferenceSize;
+
+        if ([delegate respondsToSelector:@selector(collectionView:layout:referenceSizeForHeaderInSection:)]) {
+          size = [delegate collectionView:self
+                                   layout:layout
+          referenceSizeForHeaderInSection:0];
+        }
 
         //
         CGRect slice;

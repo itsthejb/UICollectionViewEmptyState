@@ -13,9 +13,10 @@
 
 #import "BlocksKit.h"
 
-@interface SpecController1 : UICollectionViewController
+@interface SpecController1 : UICollectionViewController <UICollectionViewDelegateFlowLayout>
 @property (nonatomic, assign) NSUInteger numberOfSections;
 @property (nonatomic, assign) NSUInteger numberOfSectionItems;
+@property (nonatomic, assign) BOOL displaysSectionHeader;
 @end
 @implementation SpecController1
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
@@ -31,6 +32,23 @@
 {
   return [collectionView dequeueReusableCellWithReuseIdentifier:@"Foo"
                                                    forIndexPath:indexPath];
+}
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView
+           viewForSupplementaryElementOfKind:(NSString *)kind
+                                 atIndexPath:(NSIndexPath *)indexPath
+{
+  if (self.displaysSectionHeader) {
+    return [collectionView dequeueReusableSupplementaryViewOfKind:kind
+                                              withReuseIdentifier:@"Bar"
+                                                     forIndexPath:indexPath];
+  }
+  return nil;
+}
+- (CGSize)        collectionView:(UICollectionView *)collectionView
+                          layout:(UICollectionViewLayout *)collectionViewLayout
+ referenceSizeForHeaderInSection:(NSInteger)section
+{
+  return CGSizeMake(320, 50);
 }
 @end
 
@@ -50,6 +68,9 @@ describe(@"simple case", ^{
 
     [controller.collectionView registerClass:[UICollectionViewCell class]
             forCellWithReuseIdentifier:@"Foo"];
+    [controller.collectionView registerClass:[UICollectionReusableView class]
+                  forSupplementaryViewOfKind:UICollectionElementKindSectionHeader
+                         withReuseIdentifier:@"Bar"];
 
     controller.collectionView.emptyState_view = emptyView;
     expect(controller.collectionView.emptyState_view).to.equal(emptyView);
@@ -66,14 +87,33 @@ describe(@"simple case", ^{
     controller.numberOfSectionItems = 10;
     controller.numberOfSections = 10;
     [controller.collectionView layoutSubviews];
+
     expect(emptyView.superview).toNot.equal(controller.collectionView);
   });
 
-  it(@"should display overlay with no content", ^{
+  it(@"should display overlay with no content, covering entire collection view", ^{
     controller.numberOfSectionItems = 0;
     controller.numberOfSections = 0;
     [controller.collectionView layoutSubviews];
+
     expect(emptyView.superview).equal(controller.collectionView);
+    expect(emptyView.frame).to.equal(controller.collectionView.bounds);
+  });
+
+  it(@"should not overlay the first section header if option is set", ^{
+    controller.numberOfSectionItems = 0;
+    controller.numberOfSections = 10;
+    controller.collectionView.emptyState_shouldRespectSectionHeader = YES;
+    controller.displaysSectionHeader = YES;
+    [controller.collectionView layoutSubviews];
+
+    expect(emptyView.superview).equal(controller.collectionView);
+
+    expect(emptyView.frame).notTo.equal(controller.collectionView.bounds);
+    UICollectionReusableView *headerView = [controller collectionView:controller.collectionView
+                                    viewForSupplementaryElementOfKind:UICollectionElementKindSectionHeader
+                                                          atIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]];
+    expect(CGRectIntersectsRect(headerView.frame, emptyView.frame)).to.beFalsy;
   });
 
 });
