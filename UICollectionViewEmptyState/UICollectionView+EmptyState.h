@@ -25,6 +25,8 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol UICollectionViewEmptyStateDelegate;
+
 @interface UICollectionView (EmptyState)
 
 /** The view to be displayed when content is empty */
@@ -45,4 +47,22 @@
 /** Fade out animation duration. 0.0 = no animation */
 @property (nonatomic, assign) NSTimeInterval emptyState_hideAnimationDuration;
 
+/** Further customisation */
+@property (nonatomic, unsafe_unretained) id <UICollectionViewEmptyStateDelegate> emptyState_delegate;
+
+@end
+
+#pragma mark -
+
+@protocol UICollectionViewEmptyStateDelegate <NSObject>
+- (void)        collectionView:(UICollectionView*) collectionView
+  willAddEmptyStateOverlayView:(UIView*) view
+                      animated:(BOOL) animated;
+- (void)        collectionView:(UICollectionView*) collectionView
+   didAddEmptyStateOverlayView:(UIView*) view;
+- (void)          collectionView:(UICollectionView*) collectionView
+ willRemoveEmptyStateOverlayView:(UIView*) view
+                        animated:(BOOL) animated;
+- (void)          collectionView:(UICollectionView*) collectionView
+  didRemoveEmptyStateOverlayView:(UIView*) view;
 @end
