@@ -9,8 +9,20 @@
 #import "UICollectionView+EmptyState.h"
 #import "ObjcAssociatedObjectHelpers.h"
 
+@interface UICollectionView (EmptyStatePrivate)
+@end
+
 @implementation UICollectionView (EmptyState)
 
-SYNTHESIZE_ASC_OBJ(emptyStateView, setEmptyStateView)
+SYNTHESIZE_ASC_OBJ_ASSIGN_BLOCK(emptyStateView, setEmptyStateView, ^{}, ^{
+  NSLog(@"foo");
+});
+
++ (void)initialize {
+  static dispatch_once_t onceToken;
+  dispatch_once(&onceToken, ^{
+    
+  });
+}
 
 @end

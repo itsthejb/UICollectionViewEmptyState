@@ -11,9 +11,10 @@
 #import "BlocksKit.h"
 #import "UICollectionView+EmptyState.h"
 
-@interface DemoController ()
+@interface DemoController () <UICollectionViewDelegateFlowLayout>
 @property (strong, nonatomic) IBOutlet UIStepper *sectionStepper;
 @property (strong, nonatomic) IBOutlet UIStepper *itemStepper;
+@property (strong, nonatomic) IBOutlet UISwitch *decoratorSwitch;
 @property (strong, nonatomic) IBOutlet UILabel *emptyView;
 @end
 
@@ -25,18 +26,28 @@
   self.title = @"Demo";
 
   __weak DemoController *weakSelf = self;
+
   [self.sectionStepper addEventHandler:^(id sender) {
     [weakSelf.collectionView reloadData];
   } forControlEvents:UIControlEventValueChanged];
+
   [self.itemStepper addEventHandler:^(id sender) {
     [weakSelf.collectionView reloadData];
   } forControlEvents:UIControlEventValueChanged];
 
-  self.toolbarItems = @[
-                        [[UIBarButtonItem alloc] initWithCustomView:self.sectionStepper],
-                        [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil],
-                        [[UIBarButtonItem alloc] initWithCustomView:self.itemStepper]
-                        ];
+  [self.decoratorSwitch addEventHandler:^(id sender) {
+    [weakSelf.collectionView reloadData];
+  } forControlEvents:UIControlEventValueChanged];
+
+  self.toolbarItems = @[[[UIBarButtonItem alloc] initWithCustomView:self.sectionStepper],
+                        [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
+                                                                      target:nil
+                                                                      action:nil],
+                        [[UIBarButtonItem alloc] initWithCustomView:self.decoratorSwitch],
+                        [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
+                                                                      target:nil
+                                                                      action:nil],
+                        [[UIBarButtonItem alloc] initWithCustomView:self.itemStepper]];
 
   self.collectionView.emptyStateView = self.emptyView;
 }
@@ -51,6 +62,28 @@
   return self.itemStepper.value;
 }
 
+- (CGSize)collectionView:(UICollectionView *)collectionView
+                  layout:(UICollectionViewLayout *)collectionViewLayout
+referenceSizeForFooterInSection:(NSInteger)section
+{
+  if (self.decoratorSwitch.on) {
+    return CGSizeMake(CGRectGetWidth(self.collectionView.frame), 50);
+  } else {
+    return CGSizeMake(CGRectGetWidth(self.collectionView.frame), 0);
+  }
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView
+                  layout:(UICollectionViewLayout *)collectionViewLayout
+referenceSizeForHeaderInSection:(NSInteger)section
+{
+  if (self.decoratorSwitch.on) {
+    return CGSizeMake(CGRectGetWidth(self.collectionView.frame), 50);
+  } else {
+    return CGSizeMake(CGRectGetWidth(self.collectionView.frame), 0);
+  }
+}
+
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView
            viewForSupplementaryElementOfKind:(NSString *)kind
                                  atIndexPath:(NSIndexPath *)indexPath
@@ -62,9 +95,13 @@
              UICollectionElementKindSectionFooter : @"Footer"};
   });
 
-  return [collectionView dequeueReusableSupplementaryViewOfKind:kind
-                                            withReuseIdentifier:dict[kind]
-                                                   forIndexPath:indexPath];
+  if (1 || self.decoratorSwitch.on) {
+    return [collectionView dequeueReusableSupplementaryViewOfKind:kind
+                                              withReuseIdentifier:dict[kind]
+                                                     forIndexPath:indexPath];
+  } else {
+    return nil;
+  }
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView 
