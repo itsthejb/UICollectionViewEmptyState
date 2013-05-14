@@ -67,8 +67,20 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" id="FgK-0j-hH5"/>
+                    <connections>
+                        <outlet property="itemStepper" destination="5cQ-Gh-SAL" id="1Vc-Xz-2jl"/>
+                        <outlet property="sectionStepper" destination="hBY-W8-ubv" id="btV-ne-6tw"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bmM-LK-4Pz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <stepper opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="10" id="hBY-W8-ubv" userLabel="Section Stepper">
+                    <rect key="frame" x="0.0" y="0.0" width="94" height="27"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                </stepper>
+                <stepper opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="10" id="5cQ-Gh-SAL" userLabel="Item Stepper">
+                    <rect key="frame" x="0.0" y="0.0" width="94" height="27"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                </stepper>
             </objects>
             <point key="canvasLocation" x="566" y="-201"/>
         </scene>
@@ -99,6 +111,48 @@
         <image name="b07bb4246f.jpg" width="1800" height="300"/>
         <image name="cg_banner.jpg" width="2568" height="689"/>
     </resources>
+    <classes>
+        <class className="DemoCell" superclassName="UICollectionViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DemoCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="DemoController" superclassName="UICollectionViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DemoController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="itemStepper" candidateClass="UIStepper"/>
+                <relationship kind="outlet" name="sectionStepper" candidateClass="UIStepper"/>
+            </relationships>
+        </class>
+        <class className="Footer" superclassName="UICollectionReusableView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/Footer.h"/>
+            <relationships>
+                <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="Header" superclassName="UICollectionReusableView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/Header.h"/>
+            <relationships>
+                <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="UICollectionReusableView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionReusableView.h"/>
+        </class>
+        <class className="UICollectionViewCell" superclassName="UICollectionReusableView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewCell.h"/>
+        </class>
+        <class className="UICollectionViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewController.h"/>
+        </class>
+        <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
+        </class>
+        <class className="UICollectionViewLayout" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewLayout.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

@@ -8,9 +8,11 @@
 
 #import "DemoController.h"
 #import "DemoCell.h"
+#import "BlocksKit.h"
 
 @interface DemoController ()
-
+@property (strong, nonatomic) IBOutlet UIStepper *sectionStepper;
+@property (strong, nonatomic) IBOutlet UIStepper *itemStepper;
 @end
 
 @implementation DemoController
@@ -18,19 +20,29 @@
 - (void)viewDidLoad {
   [super viewDidLoad];
 
-  UIStepper *stepper = [[UIStepper alloc] init];
-  UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithCustomView:stepper];
-  self.toolbarItems = @[item];
+  __weak DemoController *weakSelf = self;
+  [self.sectionStepper addEventHandler:^(id sender) {
+    [weakSelf.collectionView reloadData];
+  } forControlEvents:UIControlEventValueChanged];
+  [self.itemStepper addEventHandler:^(id sender) {
+    [weakSelf.collectionView reloadData];
+  } forControlEvents:UIControlEventValueChanged];
+
+  self.toolbarItems = @[
+                        [[UIBarButtonItem alloc] initWithCustomView:self.sectionStepper],
+                        [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil],
+                        [[UIBarButtonItem alloc] initWithCustomView:self.itemStepper]
+                        ];
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-  return 5;
+  return self.sectionStepper.value;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView
      numberOfItemsInSection:(NSInteger)section
 {
-  return 5;
+  return self.itemStepper.value;
 }
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView
