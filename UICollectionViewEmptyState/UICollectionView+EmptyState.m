@@ -8,21 +8,28 @@
 
 #import "UICollectionView+EmptyState.h"
 #import "ObjcAssociatedObjectHelpers.h"
+#import "EXTSwizzle.h"
 
 @interface UICollectionView (EmptyStatePrivate)
+- (void) __empty_layoutSubviews;
+- (void) __empty_layoutSubviews_original;
 @end
 
 @implementation UICollectionView (EmptyState)
 
 SYNTHESIZE_ASC_OBJ_ASSIGN_BLOCK(emptyStateView, setEmptyStateView, ^{}, ^{
-  NSLog(@"foo");
+  static BOOL __segue_swizzled = NO;
+  if (!__segue_swizzled) {
+    EXT_SWIZZLE_INSTANCE_METHODS(UICollectionView,
+                                 layoutSubviews,
+                                 __empty_layoutSubviews,
+                                 __empty_layoutSubviews_original);
+    __segue_swizzled = YES;
+  }
 });
 
-+ (void)initialize {
-  static dispatch_once_t onceToken;
-  dispatch_once(&onceToken, ^{
-    
-  });
+- (void) __empty_layoutSubviews {
+  [self __empty_layoutSubviews_original];
 }
 
 @end
