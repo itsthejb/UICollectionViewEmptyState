@@ -10,9 +10,15 @@
 
 @implementation DemoCell
 
+@end
+
+@implementation Header
 - (void)awakeFromNib {
   [super awakeFromNib];
-  self.contentView.backgroundColor = [UIColor purpleColor];
+  self.backgroundColor = [UIColor yellowColor];
 }
+@end
+
+@implementation Footer
 
 @end

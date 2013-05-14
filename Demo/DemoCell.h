@@ -11,3 +11,11 @@
 @interface DemoCell : UICollectionViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @end
+
+@interface Header : UICollectionReusableView
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@end
+
+@interface Footer : UICollectionReusableView
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@end

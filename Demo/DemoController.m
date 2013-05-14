@@ -25,6 +25,22 @@
   return 5;
 }
 
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView
+           viewForSupplementaryElementOfKind:(NSString *)kind
+                                 atIndexPath:(NSIndexPath *)indexPath
+{
+  static NSDictionary *dict = nil;
+  static dispatch_once_t onceToken;
+  dispatch_once(&onceToken, ^{
+    dict = @{UICollectionElementKindSectionHeader : @"Header",
+             UICollectionElementKindSectionFooter : @"Footer"};
+  });
+
+  return [collectionView dequeueReusableSupplementaryViewOfKind:kind
+                                            withReuseIdentifier:dict[kind]
+                                                   forIndexPath:indexPath];
+}
+
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView 
                   cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
