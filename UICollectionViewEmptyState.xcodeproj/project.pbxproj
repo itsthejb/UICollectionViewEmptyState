@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A58AD80D981497EB7CCD560 /* libPods-Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 50D6B30A078F4D1EBDC8407E /* libPods-Tests.a */; };
 		49436768174234B400F5C015 /* DemoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 49436767174234B400F5C015 /* DemoCell.m */; };
 		494367711742367100F5C015 /* bird-1368498135Eqm.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4943676C1742367100F5C015 /* bird-1368498135Eqm.jpg */; };
 		494367721742367100F5C015 /* chess.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4943676D1742367100F5C015 /* chess.jpg */; };
@@ -65,7 +66,7 @@
 		4962683F17422F5E00B77E50 /* DemoController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DemoController.m; sourceTree = "<group>"; };
 		49626846174230E700B77E50 /* UICollectionView+EmptyState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UICollectionView+EmptyState.h"; sourceTree = "<group>"; };
 		49626847174230E700B77E50 /* UICollectionView+EmptyState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UICollectionView+EmptyState.m"; sourceTree = "<group>"; };
-		49AB913F17423D2E00A105F0 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; };
+		49AB913F17423D2E00A105F0 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		49AB916117424D3D00A105F0 /* Tests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		49AB916217424D3D00A105F0 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		49AB916817424D3D00A105F0 /* Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Tests-Info.plist"; sourceTree = "<group>"; };
@@ -73,7 +74,9 @@
 		49AB916C17424D3D00A105F0 /* Tests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Tests.h; sourceTree = "<group>"; };
 		49AB916D17424D3D00A105F0 /* Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Tests.m; sourceTree = "<group>"; };
 		49AB916F17424D3D00A105F0 /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
+		50D6B30A078F4D1EBDC8407E /* libPods-Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		70E28A7E23024606B34D88C3 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		B19C143EA6134B42A4F8E236 /* Pods-Tests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests.xcconfig"; path = "Pods/Pods-Tests.xcconfig"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +98,7 @@
 				49AB916317424D3D00A105F0 /* SenTestingKit.framework in Frameworks */,
 				49AB916417424D3D00A105F0 /* UIKit.framework in Frameworks */,
 				49AB916517424D3D00A105F0 /* Foundation.framework in Frameworks */,
+				0A58AD80D981497EB7CCD560 /* libPods-Tests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -123,7 +127,7 @@
 				49AB916617424D3D00A105F0 /* Tests */,
 				4962682217422F5E00B77E50 /* Frameworks */,
 				4962682117422F5E00B77E50 /* Products */,
-				3398EDC38F3F4F5C8BEC3202 /* Pods.xcconfig */,
+				49AB917317424E4700A105F0 /* CocoaPods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -144,6 +148,7 @@
 				4962682717422F5E00B77E50 /* CoreGraphics.framework */,
 				70E28A7E23024606B34D88C3 /* libPods.a */,
 				49AB916217424D3D00A105F0 /* SenTestingKit.framework */,
+				50D6B30A078F4D1EBDC8407E /* libPods-Tests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -159,7 +164,6 @@
 				4962683F17422F5E00B77E50 /* DemoController.m */,
 				49436766174234B400F5C015 /* DemoCell.h */,
 				49436767174234B400F5C015 /* DemoCell.m */,
-				49AB913F17423D2E00A105F0 /* Podfile */,
 				4962682A17422F5E00B77E50 /* Supporting Files */,
 			);
 			path = Demo;
@@ -208,6 +212,16 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		49AB917317424E4700A105F0 /* CocoaPods */ = {
+			isa = PBXGroup;
+			children = (
+				3398EDC38F3F4F5C8BEC3202 /* Pods.xcconfig */,
+				49AB913F17423D2E00A105F0 /* Podfile */,
+				B19C143EA6134B42A4F8E236 /* Pods-Tests.xcconfig */,
+			);
+			name = CocoaPods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -234,10 +248,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 49AB917217424D3D00A105F0 /* Build configuration list for PBXNativeTarget "Tests" */;
 			buildPhases = (
+				03A7AB7C4D7F421282840641 /* Check Pods Manifest.lock */,
 				49AB915C17424D3D00A105F0 /* Sources */,
 				49AB915D17424D3D00A105F0 /* Frameworks */,
 				49AB915E17424D3D00A105F0 /* Resources */,
 				49AB915F17424D3D00A105F0 /* ShellScript */,
+				F5D42C3CC740420E9BA3C66B /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -308,6 +324,20 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		03A7AB7C4D7F421282840641 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+		};
 		2B7AD97735A647108D9C65C1 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -348,6 +378,20 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+		};
+		F5D42C3CC740420E9BA3C66B /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-Tests-resources.sh\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -484,11 +528,8 @@
 		};
 		49AB917017424D3D00A105F0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B19C143EA6134B42A4F8E236 /* Pods-Tests.xcconfig */;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
-					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
-				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Tests/Tests-Prefix.pch";
 				INFOPLIST_FILE = "Tests/Tests-Info.plist";
@@ -499,11 +540,8 @@
 		};
 		49AB917117424D3D00A105F0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B19C143EA6134B42A4F8E236 /* Pods-Tests.xcconfig */;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
-					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
-				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Tests/Tests-Prefix.pch";
 				INFOPLIST_FILE = "Tests/Tests-Info.plist";
@@ -540,6 +578,7 @@
 				49AB917117424D3D00A105F0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
