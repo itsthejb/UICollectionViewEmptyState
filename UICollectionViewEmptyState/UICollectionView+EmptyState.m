@@ -53,12 +53,14 @@ SYNTHESIZE_ASC_OBJ_ASSIGN_BLOCK(emptyState_view,
 
   if (totalItems) {
     // remove
-    [UIView animateWithDuration:self.emptyState_hideAnimationDuration animations:^{
-      self.emptyState_view.alpha = 0.0;
-    } completion:^(BOOL finished) {
-      [self.emptyState_view removeFromSuperview];
-    }];
-  } else if (!totalItems && !self.emptyState_view.superview) {
+    if (self.emptyState_view.superview) {
+      [UIView animateWithDuration:self.emptyState_hideAnimationDuration animations:^{
+        self.emptyState_view.alpha = 0.0;
+      } completion:^(BOOL finished) {
+        [self.emptyState_view removeFromSuperview];
+      }];
+    }
+  } else if (!totalItems) {
 
     // show
     CGRect bounds = self.bounds;
@@ -86,13 +88,18 @@ SYNTHESIZE_ASC_OBJ_ASSIGN_BLOCK(emptyState_view,
       }
     }
 
+    // always update bounds
     self.emptyState_view.frame = bounds;
 
-    self.emptyState_view.alpha = 0.0;
-    [self addSubview:self.emptyState_view];
-    [UIView animateWithDuration:self.emptyState_showAnimationDuration animations:^{
-      self.emptyState_view.alpha = 1.0;
-    }];
+    // add view
+    if (self.emptyState_view.superview != self) {
+      // not visible, add
+      self.emptyState_view.alpha = 0.0;
+      [self addSubview:self.emptyState_view];
+      [UIView animateWithDuration:self.emptyState_showAnimationDuration animations:^{
+        self.emptyState_view.alpha = 1.0;
+      }];
+    }
   }
 }
 
