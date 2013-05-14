@@ -57,7 +57,10 @@ SYNTHESIZE_ASC_OBJ_BLOCK(emptyState_view,
   }
 
   NSUInteger totalItems = 0;
-  NSUInteger numberOfSections = [self.dataSource numberOfSectionsInCollectionView:self];
+  NSUInteger numberOfSections = 1;
+  if ([self.dataSource respondsToSelector:@selector(numberOfSectionsInCollectionView:)]) {
+    numberOfSections = [self.dataSource numberOfSectionsInCollectionView:self];
+  }
 
   for (NSUInteger section = 0; section < numberOfSections; ++section) {
     totalItems += [self.dataSource collectionView:self numberOfItemsInSection:section];
