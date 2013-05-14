@@ -10,4 +10,6 @@
 
 @interface UICollectionView (EmptyState)
 
+@property (nonatomic, strong) UIView *emptyStateView;
+
 @end

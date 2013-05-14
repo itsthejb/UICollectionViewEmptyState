@@ -7,7 +7,10 @@
 //
 
 #import "UICollectionView+EmptyState.h"
+#import "ObjcAssociatedObjectHelpers.h"
 
 @implementation UICollectionView (EmptyState)
+
+SYNTHESIZE_ASC_OBJ(emptyStateView, setEmptyStateView)
 
 @end

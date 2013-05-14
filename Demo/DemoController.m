@@ -9,6 +9,7 @@
 #import "DemoController.h"
 #import "DemoCell.h"
 #import "BlocksKit.h"
+#import "UICollectionView+EmptyState.h"
 
 @interface DemoController ()
 @property (strong, nonatomic) IBOutlet UIStepper *sectionStepper;
@@ -20,6 +21,8 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
+
+  self.title = @"Demo";
 
   __weak DemoController *weakSelf = self;
   [self.sectionStepper addEventHandler:^(id sender) {
@@ -35,8 +38,7 @@
                         [[UIBarButtonItem alloc] initWithCustomView:self.itemStepper]
                         ];
 
-  self.emptyView.frame = self.collectionView.bounds;
-  [self.collectionView addSubview:self.emptyView];
+  self.collectionView.emptyStateView = self.emptyView;
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
