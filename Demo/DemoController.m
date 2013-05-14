@@ -15,6 +15,14 @@
 
 @implementation DemoController
 
+- (void)viewDidLoad {
+  [super viewDidLoad];
+
+  UIStepper *stepper = [[UIStepper alloc] init];
+  UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithCustomView:stepper];
+  self.toolbarItems = @[item];
+}
+
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
   return 5;
 }
