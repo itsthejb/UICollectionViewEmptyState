@@ -7,6 +7,7 @@
 //
 
 #import "DemoController.h"
+#import "DemoCell.h"
 
 @interface DemoController ()
 
@@ -14,16 +15,21 @@
 
 @implementation DemoController
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+  return 5;
 }
 
-- (void)didReceiveMemoryWarning
+- (NSInteger)collectionView:(UICollectionView *)collectionView
+     numberOfItemsInSection:(NSInteger)section
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+  return 5;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView 
+                  cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+  DemoCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"DemoCell" forIndexPath:indexPath];
+  return cell;
 }
 
 @end

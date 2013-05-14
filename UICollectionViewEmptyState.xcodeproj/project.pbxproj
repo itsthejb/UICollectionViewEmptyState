@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		49436768174234B400F5C015 /* DemoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 49436767174234B400F5C015 /* DemoCell.m */; };
+		4943676A174234F700F5C015 /* flower.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 49436769174234F700F5C015 /* flower.jpg */; };
 		4962682417422F5E00B77E50 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4962682317422F5E00B77E50 /* UIKit.framework */; };
 		4962682617422F5E00B77E50 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4962682517422F5E00B77E50 /* Foundation.framework */; };
 		4962682817422F5E00B77E50 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4962682717422F5E00B77E50 /* CoreGraphics.framework */; };
@@ -22,6 +24,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		49436766174234B400F5C015 /* DemoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoCell.h; sourceTree = "<group>"; };
+		49436767174234B400F5C015 /* DemoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoCell.m; sourceTree = "<group>"; };
+		49436769174234F700F5C015 /* flower.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = flower.jpg; sourceTree = "<group>"; };
 		4962682017422F5E00B77E50 /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4962682317422F5E00B77E50 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		4962682517422F5E00B77E50 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -87,11 +92,14 @@
 		4962682917422F5E00B77E50 /* Demo */ = {
 			isa = PBXGroup;
 			children = (
+				49436769174234F700F5C015 /* flower.jpg */,
 				4962683217422F5E00B77E50 /* DemoAppDelegate.h */,
 				4962683317422F5E00B77E50 /* DemoAppDelegate.m */,
 				4962683B17422F5E00B77E50 /* MainStoryboard.storyboard */,
 				4962683E17422F5E00B77E50 /* DemoController.h */,
 				4962683F17422F5E00B77E50 /* DemoController.m */,
+				49436766174234B400F5C015 /* DemoCell.h */,
+				49436767174234B400F5C015 /* DemoCell.m */,
 				4962682A17422F5E00B77E50 /* Supporting Files */,
 			);
 			path = Demo;
@@ -177,6 +185,7 @@
 				4962683817422F5E00B77E50 /* Default@2x.png in Resources */,
 				4962683A17422F5E00B77E50 /* Default-568h@2x.png in Resources */,
 				4962683D17422F5E00B77E50 /* MainStoryboard.storyboard in Resources */,
+				4943676A174234F700F5C015 /* flower.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -191,6 +200,7 @@
 				4962683417422F5E00B77E50 /* DemoAppDelegate.m in Sources */,
 				4962684017422F5E00B77E50 /* DemoController.m in Sources */,
 				49626848174230E700B77E50 /* UICollectionView+EmptyState.m in Sources */,
+				49436768174234B400F5C015 /* DemoCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
