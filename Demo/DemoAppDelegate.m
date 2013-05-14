@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 Jon Crooke. All rights reserved.
 //
 
-#import "JCAppDelegate.h"
+#import "DemoAppDelegate.h"
 
-@implementation JCAppDelegate
+@implementation DemoAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {

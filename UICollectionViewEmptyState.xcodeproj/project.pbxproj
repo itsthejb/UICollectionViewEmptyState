@@ -12,32 +12,32 @@
 		4962682817422F5E00B77E50 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4962682717422F5E00B77E50 /* CoreGraphics.framework */; };
 		4962682E17422F5E00B77E50 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4962682C17422F5E00B77E50 /* InfoPlist.strings */; };
 		4962683017422F5E00B77E50 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4962682F17422F5E00B77E50 /* main.m */; };
-		4962683417422F5E00B77E50 /* JCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4962683317422F5E00B77E50 /* JCAppDelegate.m */; };
+		4962683417422F5E00B77E50 /* DemoAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4962683317422F5E00B77E50 /* DemoAppDelegate.m */; };
 		4962683617422F5E00B77E50 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 4962683517422F5E00B77E50 /* Default.png */; };
 		4962683817422F5E00B77E50 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4962683717422F5E00B77E50 /* Default@2x.png */; };
 		4962683A17422F5E00B77E50 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4962683917422F5E00B77E50 /* Default-568h@2x.png */; };
 		4962683D17422F5E00B77E50 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4962683B17422F5E00B77E50 /* MainStoryboard.storyboard */; };
-		4962684017422F5E00B77E50 /* JCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4962683F17422F5E00B77E50 /* JCViewController.m */; };
+		4962684017422F5E00B77E50 /* DemoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4962683F17422F5E00B77E50 /* DemoController.m */; };
 		49626848174230E700B77E50 /* UICollectionView+EmptyState.m in Sources */ = {isa = PBXBuildFile; fileRef = 49626847174230E700B77E50 /* UICollectionView+EmptyState.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		4962682017422F5E00B77E50 /* UICollectionViewEmptyState.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UICollectionViewEmptyState.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4962682017422F5E00B77E50 /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4962682317422F5E00B77E50 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		4962682517422F5E00B77E50 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		4962682717422F5E00B77E50 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		4962682B17422F5E00B77E50 /* UICollectionViewEmptyState-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "UICollectionViewEmptyState-Info.plist"; sourceTree = "<group>"; };
+		4962682B17422F5E00B77E50 /* Demo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Demo-Info.plist"; sourceTree = "<group>"; };
 		4962682D17422F5E00B77E50 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		4962682F17422F5E00B77E50 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		4962683117422F5E00B77E50 /* UICollectionViewEmptyState-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UICollectionViewEmptyState-Prefix.pch"; sourceTree = "<group>"; };
-		4962683217422F5E00B77E50 /* JCAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JCAppDelegate.h; sourceTree = "<group>"; };
-		4962683317422F5E00B77E50 /* JCAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JCAppDelegate.m; sourceTree = "<group>"; };
+		4962683117422F5E00B77E50 /* Demo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Demo-Prefix.pch"; sourceTree = "<group>"; };
+		4962683217422F5E00B77E50 /* DemoAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DemoAppDelegate.h; sourceTree = "<group>"; };
+		4962683317422F5E00B77E50 /* DemoAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DemoAppDelegate.m; sourceTree = "<group>"; };
 		4962683517422F5E00B77E50 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		4962683717422F5E00B77E50 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		4962683917422F5E00B77E50 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		4962683C17422F5E00B77E50 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		4962683E17422F5E00B77E50 /* JCViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JCViewController.h; sourceTree = "<group>"; };
-		4962683F17422F5E00B77E50 /* JCViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JCViewController.m; sourceTree = "<group>"; };
+		4962683E17422F5E00B77E50 /* DemoController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DemoController.h; sourceTree = "<group>"; };
+		4962683F17422F5E00B77E50 /* DemoController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DemoController.m; sourceTree = "<group>"; };
 		49626846174230E700B77E50 /* UICollectionView+EmptyState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UICollectionView+EmptyState.h"; path = "Library/UICollectionView+EmptyState.h"; sourceTree = SOURCE_ROOT; };
 		49626847174230E700B77E50 /* UICollectionView+EmptyState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UICollectionView+EmptyState.m"; path = "Library/UICollectionView+EmptyState.m"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -69,7 +69,7 @@
 		4962682117422F5E00B77E50 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4962682017422F5E00B77E50 /* UICollectionViewEmptyState.app */,
+				4962682017422F5E00B77E50 /* Demo.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -87,11 +87,11 @@
 		4962682917422F5E00B77E50 /* Demo */ = {
 			isa = PBXGroup;
 			children = (
-				4962683217422F5E00B77E50 /* JCAppDelegate.h */,
-				4962683317422F5E00B77E50 /* JCAppDelegate.m */,
+				4962683217422F5E00B77E50 /* DemoAppDelegate.h */,
+				4962683317422F5E00B77E50 /* DemoAppDelegate.m */,
 				4962683B17422F5E00B77E50 /* MainStoryboard.storyboard */,
-				4962683E17422F5E00B77E50 /* JCViewController.h */,
-				4962683F17422F5E00B77E50 /* JCViewController.m */,
+				4962683E17422F5E00B77E50 /* DemoController.h */,
+				4962683F17422F5E00B77E50 /* DemoController.m */,
 				4962682A17422F5E00B77E50 /* Supporting Files */,
 			);
 			path = Demo;
@@ -100,10 +100,10 @@
 		4962682A17422F5E00B77E50 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				4962682B17422F5E00B77E50 /* UICollectionViewEmptyState-Info.plist */,
+				4962682B17422F5E00B77E50 /* Demo-Info.plist */,
 				4962682C17422F5E00B77E50 /* InfoPlist.strings */,
 				4962682F17422F5E00B77E50 /* main.m */,
-				4962683117422F5E00B77E50 /* UICollectionViewEmptyState-Prefix.pch */,
+				4962683117422F5E00B77E50 /* Demo-Prefix.pch */,
 				4962683517422F5E00B77E50 /* Default.png */,
 				4962683717422F5E00B77E50 /* Default@2x.png */,
 				4962683917422F5E00B77E50 /* Default-568h@2x.png */,
@@ -138,7 +138,7 @@
 			);
 			name = Demo;
 			productName = UICollectionViewEmptyState;
-			productReference = 4962682017422F5E00B77E50 /* UICollectionViewEmptyState.app */;
+			productReference = 4962682017422F5E00B77E50 /* Demo.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -189,8 +189,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				4962683017422F5E00B77E50 /* main.m in Sources */,
-				4962683417422F5E00B77E50 /* JCAppDelegate.m in Sources */,
-				4962684017422F5E00B77E50 /* JCViewController.m in Sources */,
+				4962683417422F5E00B77E50 /* DemoAppDelegate.m in Sources */,
+				4962684017422F5E00B77E50 /* DemoController.m in Sources */,
 				49626848174230E700B77E50 /* UICollectionView+EmptyState.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -277,8 +277,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "UICollectionViewEmptyState/UICollectionViewEmptyState-Prefix.pch";
-				INFOPLIST_FILE = "UICollectionViewEmptyState/UICollectionViewEmptyState-Info.plist";
+				GCC_PREFIX_HEADER = "Demo/Demo-Prefix.pch";
+				INFOPLIST_FILE = "Demo/Demo-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -288,8 +288,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "UICollectionViewEmptyState/UICollectionViewEmptyState-Prefix.pch";
-				INFOPLIST_FILE = "UICollectionViewEmptyState/UICollectionViewEmptyState-Info.plist";
+				GCC_PREFIX_HEADER = "Demo/Demo-Prefix.pch";
+				INFOPLIST_FILE = "Demo/Demo-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -314,6 +314,7 @@
 				4962684517422F5E00B77E50 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -6,13 +6,13 @@
 //  Copyright (c) 2013 Jon Crooke. All rights reserved.
 //
 
-#import "JCViewController.h"
+#import "DemoController.h"
 
-@interface JCViewController ()
+@interface DemoController ()
 
 @end
 
-@implementation JCViewController
+@implementation DemoController
 
 - (void)viewDidLoad
 {

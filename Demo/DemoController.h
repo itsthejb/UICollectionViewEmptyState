@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface JCViewController : UICollectionViewController
+@interface DemoController : UICollectionViewController
 
 @end
