@@ -18,23 +18,19 @@
 @property (nonatomic, assign) NSUInteger numberOfSectionItems;
 @end
 @implementation SpecController1
-- (void)viewDidLoad {
-  [super viewDidLoad];
-}
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-  return 1;
+  return self.numberOfSections;
 }
 - (NSInteger)collectionView:(UICollectionView *)collectionView
      numberOfItemsInSection:(NSInteger)section
 {
-  return 10;
+  return self.numberOfSectionItems;
 }
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
                   cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-  UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Foo"
-                                                                         forIndexPath:indexPath];
-  return cell;
+  return [collectionView dequeueReusableCellWithReuseIdentifier:@"Foo"
+                                                   forIndexPath:indexPath];
 }
 @end
 
@@ -47,13 +43,12 @@ describe(@"simple case", ^{
   __block UIView *emptyView = nil;
 
   before(^{
-    UIButton *b = [UIButton buttonWithType:UIButtonTypeCustom];
-    [b addEventHandler:^(id sender) {
-      NSLog(@"foo");
-    } forControlEvents:UIControlEventTouchUpInside];
-
     layout = [[UICollectionViewFlowLayout alloc] init];
     controller = [[SpecController1 alloc] initWithCollectionViewLayout:layout];
+
+    controller.numberOfSectionItems = 10;
+    controller.numberOfSections = 10;
+
     emptyView = [[UIView alloc] init];
     [controller loadView];
     expect(controller.isViewLoaded).to.beTruthy;
