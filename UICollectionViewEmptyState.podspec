@@ -15,8 +15,9 @@ Pod::Spec.new do |s|
   s.requires_arc  = true
   s.source        = {
     :git => 'https://joncrooke@bitbucket.org/joncrooke/uicollectionviewemptyview.git',
-    # :tag => "v" + s.version.to_s
     :branch => 'develop'
   }
   s.source_files = 'UICollectionViewEmptyState/*.{h,m}'
 end
+
+    # :tag => "v" + s.version.to_s
