@@ -44,12 +44,14 @@ SYNTHESIZE_ASC_OBJ_BLOCK(emptyState_view,
 - (void) __empty_layoutSubviews {
   [self __empty_layoutSubviews_original];
 
-  // only compatible with UICollectionViewDelegateFlowLayout right now...
-  if (self.emptyState_view &&
+  // section header respect requires UICollectionViewDelegateFlowLayout right now...
+  if (self.emptyState_view && self.emptyState_shouldRespectSectionHeader &&
       ![self.collectionViewLayout isKindOfClass:[UICollectionViewFlowLayout class]])
   {
     [NSException raise:@"UICollectionView+EmptyState Exception"
-                format:@"Only compatible with %@. Cannot be used with %@",
+                format:
+     @"Only compatible with %@ when emptyState_shouldRespectSectionHeader = YES." \
+     " Cannot be used with %@",
      NSStringFromClass([UICollectionViewFlowLayout class]),
      NSStringFromClass([self.collectionViewLayout class])];
   }
