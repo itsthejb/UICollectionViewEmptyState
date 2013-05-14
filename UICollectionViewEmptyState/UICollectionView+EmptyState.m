@@ -58,12 +58,23 @@ SYNTHESIZE_ASC_OBJ_ASSIGN_BLOCK(emptyState_view,
     }];
   } else if (!totalItems && !self.emptyState_view.superview) {
     // show
+    CGRect bounds = self.bounds;
+
     if (self.emptyState_shouldRespectSectionHeader) {
       // reveal the first section's supplementary view
-      
+      id <UICollectionViewDelegateFlowLayout> delegate = (id) self.delegate;
+      CGSize size = [delegate collectionView:self
+                                      layout:self.collectionViewLayout
+             referenceSizeForHeaderInSection:0];
+
+      //
+      CGRect slice;
+      CGRectDivide(bounds, &slice, &bounds, size.height, CGRectMinYEdge);
+      self.emptyState_view.frame = bounds;
+
     } else {
       // cover entire collection view
-      self.emptyState_view.frame = self.bounds;
+      self.emptyState_view.frame = bounds;
     }
 
     self.emptyState_view.alpha = 0.0;
