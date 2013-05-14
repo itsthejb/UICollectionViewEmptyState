@@ -29,6 +29,18 @@
                   cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
   DemoCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"DemoCell" forIndexPath:indexPath];
+
+  static NSArray *images = nil;
+  static dispatch_once_t onceToken;
+  dispatch_once(&onceToken, ^{
+    images = @[@"bird-1368498135Eqm.jpg",
+               @"chess.jpg",
+               @"empire-state-building-1368498219KmC.jpg",
+               @"goose-1368497908c6H.jpg",
+               @"sun-1368498327ZH8.jpg"];
+  });
+  cell.imageView.image = [UIImage imageNamed:images[indexPath.section]];
+
   return cell;
 }
 

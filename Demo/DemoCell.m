@@ -13,7 +13,6 @@
 - (void)awakeFromNib {
   [super awakeFromNib];
   self.contentView.backgroundColor = [UIColor purpleColor];
-  self.imageView.image = [UIImage imageNamed:@"flower.jpg"];
 }
 
 @end
