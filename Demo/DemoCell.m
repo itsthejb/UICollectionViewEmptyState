@@ -7,15 +7,29 @@
 //
 
 #import "DemoCell.h"
+#import "BlocksKit.h"
 
 @implementation DemoCell
-
 @end
 
 @implementation Header
 - (void)awakeFromNib {
   [super awakeFromNib];
-  self.backgroundColor = [UIColor yellowColor];
+
+  [self.testControl addEventHandler:^(UISwitch *control) {
+    if (control.on) {
+      self.imageView.alpha = 0.25;
+      self.backgroundColor = [UIColor yellowColor];
+    } else {
+      self.imageView.alpha = 1.0;
+    }
+  } forControlEvents:UIControlEventValueChanged];
+
+  [self.testControl sendActionsForControlEvents:UIControlEventValueChanged];
+}
+- (void)prepareForReuse {
+  [super prepareForReuse];
+  self.testControl.on = NO;
 }
 @end
 

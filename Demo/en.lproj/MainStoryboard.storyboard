@@ -46,9 +46,14 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </imageView>
+                                <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="ivx-sJ-fUg">
+                                    <rect key="frame" x="122" y="11" width="79" height="27"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                </switch>
                             </subviews>
                             <connections>
                                 <outlet property="imageView" destination="rwX-we-sQa" id="IyD-bo-gb1"/>
+                                <outlet property="testControl" destination="ivx-sJ-fUg" id="OvU-ds-hh2"/>
                             </connections>
                         </collectionReusableView>
                         <collectionReusableView key="sectionFooterView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Footer" id="fMN-73-O8E" userLabel="Footer" customClass="Footer">

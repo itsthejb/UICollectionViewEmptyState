@@ -13,6 +13,7 @@
 @end
 
 @interface Header : UICollectionReusableView
+@property (weak, nonatomic) IBOutlet UISwitch *testControl;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @end
 
