@@ -18,6 +18,7 @@
 		4962683A17422F5E00B77E50 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4962683917422F5E00B77E50 /* Default-568h@2x.png */; };
 		4962683D17422F5E00B77E50 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4962683B17422F5E00B77E50 /* MainStoryboard.storyboard */; };
 		4962684017422F5E00B77E50 /* JCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4962683F17422F5E00B77E50 /* JCViewController.m */; };
+		49626848174230E700B77E50 /* UICollectionView+EmptyState.m in Sources */ = {isa = PBXBuildFile; fileRef = 49626847174230E700B77E50 /* UICollectionView+EmptyState.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,8 @@
 		4962683C17422F5E00B77E50 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		4962683E17422F5E00B77E50 /* JCViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JCViewController.h; sourceTree = "<group>"; };
 		4962683F17422F5E00B77E50 /* JCViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JCViewController.m; sourceTree = "<group>"; };
+		49626846174230E700B77E50 /* UICollectionView+EmptyState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UICollectionView+EmptyState.h"; path = "Library/UICollectionView+EmptyState.h"; sourceTree = SOURCE_ROOT; };
+		49626847174230E700B77E50 /* UICollectionView+EmptyState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UICollectionView+EmptyState.m"; path = "Library/UICollectionView+EmptyState.m"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,7 +59,8 @@
 		4962681717422F5E00B77E50 = {
 			isa = PBXGroup;
 			children = (
-				4962682917422F5E00B77E50 /* UICollectionViewEmptyState */,
+				49626849174230E900B77E50 /* Library */,
+				4962682917422F5E00B77E50 /* Demo */,
 				4962682217422F5E00B77E50 /* Frameworks */,
 				4962682117422F5E00B77E50 /* Products */,
 			);
@@ -80,7 +84,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		4962682917422F5E00B77E50 /* UICollectionViewEmptyState */ = {
+		4962682917422F5E00B77E50 /* Demo */ = {
 			isa = PBXGroup;
 			children = (
 				4962683217422F5E00B77E50 /* JCAppDelegate.h */,
@@ -90,7 +94,7 @@
 				4962683F17422F5E00B77E50 /* JCViewController.m */,
 				4962682A17422F5E00B77E50 /* Supporting Files */,
 			);
-			path = UICollectionViewEmptyState;
+			path = Demo;
 			sourceTree = "<group>";
 		};
 		4962682A17422F5E00B77E50 /* Supporting Files */ = {
@@ -107,12 +111,22 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		49626849174230E900B77E50 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				49626846174230E700B77E50 /* UICollectionView+EmptyState.h */,
+				49626847174230E700B77E50 /* UICollectionView+EmptyState.m */,
+			);
+			name = Library;
+			path = UICollectionViewEmptyState;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		4962681F17422F5E00B77E50 /* UICollectionViewEmptyState */ = {
+		4962681F17422F5E00B77E50 /* Demo */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4962684317422F5E00B77E50 /* Build configuration list for PBXNativeTarget "UICollectionViewEmptyState" */;
+			buildConfigurationList = 4962684317422F5E00B77E50 /* Build configuration list for PBXNativeTarget "Demo" */;
 			buildPhases = (
 				4962681C17422F5E00B77E50 /* Sources */,
 				4962681D17422F5E00B77E50 /* Frameworks */,
@@ -122,7 +136,7 @@
 			);
 			dependencies = (
 			);
-			name = UICollectionViewEmptyState;
+			name = Demo;
 			productName = UICollectionViewEmptyState;
 			productReference = 4962682017422F5E00B77E50 /* UICollectionViewEmptyState.app */;
 			productType = "com.apple.product-type.application";
@@ -149,7 +163,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				4962681F17422F5E00B77E50 /* UICollectionViewEmptyState */,
+				4962681F17422F5E00B77E50 /* Demo */,
 			);
 		};
 /* End PBXProject section */
@@ -177,6 +191,7 @@
 				4962683017422F5E00B77E50 /* main.m in Sources */,
 				4962683417422F5E00B77E50 /* JCAppDelegate.m in Sources */,
 				4962684017422F5E00B77E50 /* JCViewController.m in Sources */,
+				49626848174230E700B77E50 /* UICollectionView+EmptyState.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,7 +307,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4962684317422F5E00B77E50 /* Build configuration list for PBXNativeTarget "UICollectionViewEmptyState" */ = {
+		4962684317422F5E00B77E50 /* Build configuration list for PBXNativeTarget "Demo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4962684417422F5E00B77E50 /* Debug */,

@@ -1,5 +1,5 @@
 //
-//  JCViewController.h
+//  UICollectionView+EmptyState.h
 //  UICollectionViewEmptyState
 //
 //  Created by Jonathan Crooke on 14/05/2013.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface JCViewController : UIViewController
+@interface UICollectionView (EmptyState)
 
 @end
