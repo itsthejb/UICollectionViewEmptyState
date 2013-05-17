@@ -32,6 +32,9 @@
 /** The view to be displayed when content is empty */
 @property (nonatomic, strong) UIView *emptyState_view;
 
+/** Convenience method to create a UIImageView with a centred UIImage placeholder */
+- (UIImageView*) emptyState_imageViewWithImage:(UIImage*) image;
+
 /** 
  If YES and section 0 contains a supplementary header view,
  don't overlay it. Useful if you have important controls in
