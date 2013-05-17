@@ -25,10 +25,15 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol UICollectionViewEmptyStateDelegate;
+
 @interface UICollectionView (EmptyState)
 
 /** The view to be displayed when content is empty */
 @property (nonatomic, strong) UIView *emptyState_view;
+
+/** Convenience method to create a UIImageView with a centred UIImage placeholder */
+- (UIImageView*) setEmptyStateImageViewWithImage:(UIImage*) image;
 
 /** 
  If YES and section 0 contains a supplementary header view,
@@ -45,4 +50,23 @@
 /** Fade out animation duration. 0.0 = no animation */
 @property (nonatomic, assign) NSTimeInterval emptyState_hideAnimationDuration;
 
+/** Further customisation */
+@property (nonatomic, unsafe_unretained) id <UICollectionViewEmptyStateDelegate> emptyState_delegate;
+
+@end
+
+#pragma mark -
+
+@protocol UICollectionViewEmptyStateDelegate <NSObject>
+@optional
+- (void)        collectionView:(UICollectionView*) collectionView
+  willAddEmptyStateOverlayView:(UIView*) view
+                      animated:(BOOL) animated;
+- (void)        collectionView:(UICollectionView*) collectionView
+   didAddEmptyStateOverlayView:(UIView*) view;
+- (void)          collectionView:(UICollectionView*) collectionView
+ willRemoveEmptyStateOverlayView:(UIView*) view
+                        animated:(BOOL) animated;
+- (void)          collectionView:(UICollectionView*) collectionView
+  didRemoveEmptyStateOverlayView:(UIView*) view;
 @end

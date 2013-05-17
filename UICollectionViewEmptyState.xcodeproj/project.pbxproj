@@ -33,7 +33,7 @@
 		49AB916417424D3D00A105F0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4962682317422F5E00B77E50 /* UIKit.framework */; };
 		49AB916517424D3D00A105F0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4962682517422F5E00B77E50 /* Foundation.framework */; };
 		49AB916B17424D3D00A105F0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 49AB916917424D3D00A105F0 /* InfoPlist.strings */; };
-		49AB916E17424D3D00A105F0 /* Spec1.m in Sources */ = {isa = PBXBuildFile; fileRef = 49AB916D17424D3D00A105F0 /* Spec1.m */; };
+		49AB916E17424D3D00A105F0 /* Specs.m in Sources */ = {isa = PBXBuildFile; fileRef = 49AB916D17424D3D00A105F0 /* Specs.m */; };
 		49AB917417425BE900A105F0 /* UICollectionView+EmptyState.m in Sources */ = {isa = PBXBuildFile; fileRef = 49626847174230E700B77E50 /* UICollectionView+EmptyState.m */; };
 		49AB917517425BFC00A105F0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4962682717422F5E00B77E50 /* CoreGraphics.framework */; };
 		BF8D4C1E083A4F16AF4AFF01 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 70E28A7E23024606B34D88C3 /* libPods.a */; };
@@ -73,7 +73,7 @@
 		49AB916217424D3D00A105F0 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		49AB916817424D3D00A105F0 /* Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Tests-Info.plist"; sourceTree = "<group>"; };
 		49AB916A17424D3D00A105F0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		49AB916D17424D3D00A105F0 /* Spec1.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Spec1.m; sourceTree = "<group>"; };
+		49AB916D17424D3D00A105F0 /* Specs.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Specs.m; sourceTree = "<group>"; };
 		49AB916F17424D3D00A105F0 /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
 		49AB917717428D3B00A105F0 /* UICollectionViewEmptyState.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = UICollectionViewEmptyState.podspec; sourceTree = "<group>"; };
 		49AB91781742981700A105F0 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
@@ -200,7 +200,7 @@
 		49AB916617424D3D00A105F0 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				49AB916D17424D3D00A105F0 /* Spec1.m */,
+				49AB916D17424D3D00A105F0 /* Specs.m */,
 				49AB916717424D3D00A105F0 /* Supporting Files */,
 			);
 			path = Tests;
@@ -417,7 +417,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				49AB916E17424D3D00A105F0 /* Spec1.m in Sources */,
+				49AB916E17424D3D00A105F0 /* Specs.m in Sources */,
 				49AB917417425BE900A105F0 /* UICollectionView+EmptyState.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

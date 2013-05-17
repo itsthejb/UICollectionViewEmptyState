@@ -34,6 +34,8 @@
 
 @implementation UICollectionView (EmptyState)
 
+SYNTHESIZE_ASC_OBJ_ASSIGN(emptyState_delegate,
+                          setEmptyState_delegate)
 SYNTHESIZE_ASC_PRIMITIVE(emptyState_showAnimationDuration,
                          setEmptyState_showAnimationDuration,
                          NSTimeInterval)
@@ -86,22 +88,36 @@ SYNTHESIZE_ASC_OBJ_BLOCK(emptyState_view,
   if (totalItems) {
     // remove
     if (self.emptyState_view.superview) {
-      [UIView animateWithDuration:self.emptyState_hideAnimationDuration animations:^{
+
+      if ([self.emptyState_delegate respondsToSelector:@selector(collectionView:willRemoveEmptyStateOverlayView:animated:)]) {
+        [self.emptyState_delegate collectionView:self
+                 willRemoveEmptyStateOverlayView:self.emptyState_view
+                                        animated:!!self.emptyState_hideAnimationDuration];
+      }
+
+      [UIView animateWithDuration:self.emptyState_hideAnimationDuration
+                       animations:^
+      {
         self.emptyState_view.alpha = 0.0;
       } completion:^(BOOL finished) {
         [self.emptyState_view removeFromSuperview];
+
+        if ([self.emptyState_delegate respondsToSelector:@selector(collectionView:didRemoveEmptyStateOverlayView:)]) {
+          [self.emptyState_delegate collectionView:self
+                    didRemoveEmptyStateOverlayView:self.emptyState_view];
+        }
       }];
     }
-  } else if (!totalItems) {
+  } else {
 
     // show
     CGRect bounds = self.bounds;
 
-    id <UICollectionViewDelegateFlowLayout> delegate = (id) self.delegate;
-    UICollectionViewFlowLayout *layout = (id) self.collectionViewLayout;
-
     // don't overlay header?
     if (self.emptyState_shouldRespectSectionHeader) {
+
+      id <UICollectionViewDelegateFlowLayout> delegate = (id) self.delegate;
+      UICollectionViewFlowLayout *layout = (id) self.collectionViewLayout;
 
       // is there actually a header to be displayed?
       if (numberOfSections &&
@@ -121,7 +137,6 @@ SYNTHESIZE_ASC_OBJ_BLOCK(emptyState_view,
         //
         CGRect slice;
         CGRectDivide(bounds, &slice, &bounds, size.height, CGRectMinYEdge);
-        self.emptyState_view.frame = bounds;
       }
     }
 
@@ -130,14 +145,36 @@ SYNTHESIZE_ASC_OBJ_BLOCK(emptyState_view,
 
     // add view
     if (self.emptyState_view.superview != self) {
+
+      // pre-display
+      if ([self.emptyState_delegate respondsToSelector:@selector(collectionView:willAddEmptyStateOverlayView:animated:)]) {
+        [self.emptyState_delegate collectionView:self
+                    willAddEmptyStateOverlayView:self.emptyState_view
+                                        animated:!!self.emptyState_showAnimationDuration];
+      }
+
       // not visible, add
       self.emptyState_view.alpha = 0.0;
       [self addSubview:self.emptyState_view];
+
       [UIView animateWithDuration:self.emptyState_showAnimationDuration animations:^{
         self.emptyState_view.alpha = 1.0;
+      } completion:^(BOOL finished) {
+        if ([self.emptyState_delegate respondsToSelector:@selector(collectionView:didAddEmptyStateOverlayView:)]) {
+          [self.emptyState_delegate collectionView:self
+                       didAddEmptyStateOverlayView:self.emptyState_view];
+        }
       }];
     }
   }
+}
+
+- (UIImageView*) setEmptyStateImageViewWithImage:(UIImage*) image
+{
+  UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
+  imageView.contentMode = UIViewContentModeCenter;
+  self.emptyState_view = imageView;
+  return imageView;
 }
 
 @end
