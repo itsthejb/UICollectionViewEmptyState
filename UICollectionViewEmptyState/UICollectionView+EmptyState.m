@@ -169,7 +169,7 @@ SYNTHESIZE_ASC_OBJ_BLOCK(emptyState_view,
   }
 }
 
-- (UIImageView*) emptyState_imageViewWithImage:(UIImage*) image
+- (UIImageView*) setEmptyStateImageViewWithImage:(UIImage*) image
 {
   UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
   imageView.contentMode = UIViewContentModeCenter;

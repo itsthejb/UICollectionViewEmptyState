@@ -33,7 +33,7 @@
 @property (nonatomic, strong) UIView *emptyState_view;
 
 /** Convenience method to create a UIImageView with a centred UIImage placeholder */
-- (UIImageView*) emptyState_imageViewWithImage:(UIImage*) image;
+- (UIImageView*) setEmptyStateImageViewWithImage:(UIImage*) image;
 
 /** 
  If YES and section 0 contains a supplementary header view,
