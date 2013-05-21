@@ -4,6 +4,10 @@ Want to display an arbitrary `UIView` on your `UICollectionView` when in an *emp
 
 ##What's new
 
+* 1.0.1
+	* Tidying of methods.
+	* Existing empty views are always removed when a new view is set. Allows for more dynamic changing of empty state views. 
+
 * 1.0.0
 	* Added `UICollectionViewEmptyStateDelegate` protocol.
 	* Added `setEmptyStateImageViewWithImage:`.
