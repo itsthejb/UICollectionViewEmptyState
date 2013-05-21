@@ -30,6 +30,9 @@
 @interface UICollectionView (EmptyStatePrivate)
 - (void) __empty_layoutSubviews;
 - (void) __empty_layoutSubviews_original;
+- (void) __empty_layoutAddViewItems:(NSUInteger) items
+                            section:(NSUInteger) sections;
+- (void) __empty_layoutRemoveView;
 @end
 
 @implementation UICollectionView (EmptyState)
@@ -58,6 +61,8 @@ SYNTHESIZE_ASC_OBJ_BLOCK(emptyState_view,
                                  __empty_layoutSubviews_original);
     __segue_swizzled = YES;
   }
+  // remove any existing view
+  [self.emptyState_view removeFromSuperview];
 });
 
 - (void) __empty_layoutSubviews {
@@ -88,85 +93,95 @@ SYNTHESIZE_ASC_OBJ_BLOCK(emptyState_view,
   if (totalItems) {
     // remove
     if (self.emptyState_view.superview) {
-
-      if ([self.emptyState_delegate respondsToSelector:@selector(collectionView:willRemoveEmptyStateOverlayView:animated:)]) {
-        [self.emptyState_delegate collectionView:self
-                 willRemoveEmptyStateOverlayView:self.emptyState_view
-                                        animated:!!self.emptyState_hideAnimationDuration];
-      }
-
-      [UIView animateWithDuration:self.emptyState_hideAnimationDuration
-                       animations:^
-      {
-        self.emptyState_view.alpha = 0.0;
-      } completion:^(BOOL finished) {
-        [self.emptyState_view removeFromSuperview];
-
-        if ([self.emptyState_delegate respondsToSelector:@selector(collectionView:didRemoveEmptyStateOverlayView:)]) {
-          [self.emptyState_delegate collectionView:self
-                    didRemoveEmptyStateOverlayView:self.emptyState_view];
-        }
-      }];
+      [self __empty_layoutRemoveView];
     }
   } else {
-
-    // show
-    CGRect bounds = self.bounds;
-
-    // don't overlay header?
-    if (self.emptyState_shouldRespectSectionHeader) {
-
-      id <UICollectionViewDelegateFlowLayout> delegate = (id) self.delegate;
-      UICollectionViewFlowLayout *layout = (id) self.collectionViewLayout;
-
-      // is there actually a header to be displayed?
-      if (numberOfSections &&
-          [self.dataSource collectionView:self
-        viewForSupplementaryElementOfKind:UICollectionElementKindSectionHeader
-                              atIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]])
-      {
-        // reveal the first section's supplementary view
-        CGSize size = layout.headerReferenceSize;
-
-        if ([delegate respondsToSelector:@selector(collectionView:layout:referenceSizeForHeaderInSection:)]) {
-          size = [delegate collectionView:self
-                                   layout:layout
-          referenceSizeForHeaderInSection:0];
-        }
-
-        //
-        CGRect slice;
-        CGRectDivide(bounds, &slice, &bounds, size.height, CGRectMinYEdge);
-      }
-    }
-
-    // always update bounds
-    self.emptyState_view.frame = bounds;
-
-    // add view
-    if (self.emptyState_view.superview != self) {
-
-      // pre-display
-      if ([self.emptyState_delegate respondsToSelector:@selector(collectionView:willAddEmptyStateOverlayView:animated:)]) {
-        [self.emptyState_delegate collectionView:self
-                    willAddEmptyStateOverlayView:self.emptyState_view
-                                        animated:!!self.emptyState_showAnimationDuration];
-      }
-
-      // not visible, add
-      self.emptyState_view.alpha = 0.0;
-      [self addSubview:self.emptyState_view];
-
-      [UIView animateWithDuration:self.emptyState_showAnimationDuration animations:^{
-        self.emptyState_view.alpha = 1.0;
-      } completion:^(BOOL finished) {
-        if ([self.emptyState_delegate respondsToSelector:@selector(collectionView:didAddEmptyStateOverlayView:)]) {
-          [self.emptyState_delegate collectionView:self
-                       didAddEmptyStateOverlayView:self.emptyState_view];
-        }
-      }];
+    if (!self.emptyState_view.superview) {
+      [self __empty_layoutAddViewItems:totalItems section:numberOfSections];
     }
   }
+}
+
+- (void) __empty_layoutAddViewItems:(NSUInteger) totalItems
+                            section:(NSUInteger) numberOfSections
+{
+  // show
+  CGRect bounds = self.bounds;
+
+  // don't overlay header?
+  if (self.emptyState_shouldRespectSectionHeader) {
+
+    id <UICollectionViewDelegateFlowLayout> delegate = (id) self.delegate;
+    UICollectionViewFlowLayout *layout = (id) self.collectionViewLayout;
+
+    // is there actually a header to be displayed?
+    if (numberOfSections &&
+        [self.dataSource collectionView:self
+      viewForSupplementaryElementOfKind:UICollectionElementKindSectionHeader
+                            atIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]])
+    {
+      // reveal the first section's supplementary view
+      CGSize size = layout.headerReferenceSize;
+
+      if ([delegate respondsToSelector:@selector(collectionView:layout:referenceSizeForHeaderInSection:)]) {
+        size = [delegate collectionView:self
+                                 layout:layout
+        referenceSizeForHeaderInSection:0];
+      }
+
+      //
+      CGRect slice;
+      CGRectDivide(bounds, &slice, &bounds, size.height, CGRectMinYEdge);
+    }
+  }
+
+  // always update bounds
+  self.emptyState_view.frame = bounds;
+
+  // add view
+  if (self.emptyState_view.superview != self) {
+
+    // pre-display
+    if ([self.emptyState_delegate respondsToSelector:@selector(collectionView:willAddEmptyStateOverlayView:animated:)]) {
+      [self.emptyState_delegate collectionView:self
+                  willAddEmptyStateOverlayView:self.emptyState_view
+                                      animated:!!self.emptyState_showAnimationDuration];
+    }
+
+    // not visible, add
+    self.emptyState_view.alpha = 0.0;
+    [self addSubview:self.emptyState_view];
+
+    [UIView animateWithDuration:self.emptyState_showAnimationDuration animations:^{
+      self.emptyState_view.alpha = 1.0;
+    } completion:^(BOOL finished) {
+      if ([self.emptyState_delegate respondsToSelector:@selector(collectionView:didAddEmptyStateOverlayView:)]) {
+        [self.emptyState_delegate collectionView:self
+                     didAddEmptyStateOverlayView:self.emptyState_view];
+      }
+    }];
+  }
+}
+
+- (void)__empty_layoutRemoveView {
+  if ([self.emptyState_delegate respondsToSelector:@selector(collectionView:willRemoveEmptyStateOverlayView:animated:)]) {
+    [self.emptyState_delegate collectionView:self
+             willRemoveEmptyStateOverlayView:self.emptyState_view
+                                    animated:!!self.emptyState_hideAnimationDuration];
+  }
+
+  [UIView animateWithDuration:self.emptyState_hideAnimationDuration
+                   animations:^
+   {
+     self.emptyState_view.alpha = 0.0;
+   } completion:^(BOOL finished) {
+     [self.emptyState_view removeFromSuperview];
+
+     if ([self.emptyState_delegate respondsToSelector:@selector(collectionView:didRemoveEmptyStateOverlayView:)]) {
+       [self.emptyState_delegate collectionView:self
+                 didRemoveEmptyStateOverlayView:self.emptyState_view];
+     }
+   }];
 }
 
 - (UIImageView*) setEmptyStateImageViewWithImage:(UIImage*) image
