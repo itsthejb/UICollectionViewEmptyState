@@ -4,6 +4,9 @@ Want to display an arbitrary `UIView` on your `UICollectionView` when in an *emp
 
 ##What's new
 
+* 1.0.3
+  * Dependency updates.
+
 * 1.0.2
   * Fixed dependency error.
 
