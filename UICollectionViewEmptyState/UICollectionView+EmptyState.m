@@ -26,6 +26,7 @@
 #import "UICollectionView+EmptyState.h"
 #import "ObjcAssociatedObjectHelpers.h"
 #import "EXTSwizzle.h"
+#import "EXTScope.h"
 
 @interface UICollectionView (EmptyStatePrivate)
 - (void) __empty_layoutSubviews;
@@ -44,6 +45,12 @@ SYNTHESIZE_ASC_PRIMITIVE(emptyState_showAnimationDuration,
                          NSTimeInterval)
 SYNTHESIZE_ASC_PRIMITIVE(emptyState_hideAnimationDuration,
                          setEmptyState_hideAnimationDuration,
+                         NSTimeInterval)
+SYNTHESIZE_ASC_PRIMITIVE(emptyState_showDelay,
+                         setEmptyState_showDelay,
+                         NSTimeInterval)
+SYNTHESIZE_ASC_PRIMITIVE(emptyState_hideDelay,
+                         setEmptyState_hideDelay,
                          NSTimeInterval)
 SYNTHESIZE_ASC_PRIMITIVE(emptyState_shouldRespectSectionHeader,
                          setEmptyState_shouldRespectSectionHeader,
@@ -142,7 +149,9 @@ SYNTHESIZE_ASC_OBJ_BLOCK(emptyState_view,
   if (self.emptyState_view.superview != self) {
 
     // pre-display
-    if ([self.emptyState_delegate respondsToSelector:@selector(collectionView:willAddEmptyStateOverlayView:animated:)]) {
+    if ([self.emptyState_delegate
+         respondsToSelector:@selector(collectionView:willAddEmptyStateOverlayView:animated:)])
+    {
       [self.emptyState_delegate collectionView:self
                   willAddEmptyStateOverlayView:self.emptyState_view
                                       animated:!!self.emptyState_showAnimationDuration];
@@ -152,10 +161,19 @@ SYNTHESIZE_ASC_OBJ_BLOCK(emptyState_view,
     self.emptyState_view.alpha = 0.0;
     [self addSubview:self.emptyState_view];
 
-    [UIView animateWithDuration:self.emptyState_showAnimationDuration animations:^{
+    @weakify(self)
+    [UIView animateWithDuration:self.emptyState_showAnimationDuration
+                          delay:self.emptyState_showDelay
+                        options:0
+                     animations:^
+    {
+      @strongify(self)
       self.emptyState_view.alpha = 1.0;
     } completion:^(BOOL finished) {
-      if ([self.emptyState_delegate respondsToSelector:@selector(collectionView:didAddEmptyStateOverlayView:)]) {
+      @strongify(self)
+      if ([self.emptyState_delegate
+           respondsToSelector:@selector(collectionView:didAddEmptyStateOverlayView:)])
+      {
         [self.emptyState_delegate collectionView:self
                      didAddEmptyStateOverlayView:self.emptyState_view];
       }
@@ -164,24 +182,30 @@ SYNTHESIZE_ASC_OBJ_BLOCK(emptyState_view,
 }
 
 - (void)__empty_layoutRemoveView {
-  if ([self.emptyState_delegate respondsToSelector:@selector(collectionView:willRemoveEmptyStateOverlayView:animated:)]) {
+  if ([self.emptyState_delegate
+       respondsToSelector:@selector(collectionView:willRemoveEmptyStateOverlayView:animated:)])
+  {
     [self.emptyState_delegate collectionView:self
              willRemoveEmptyStateOverlayView:self.emptyState_view
                                     animated:!!self.emptyState_hideAnimationDuration];
   }
 
+  @weakify(self)
   [UIView animateWithDuration:self.emptyState_hideAnimationDuration
+                        delay:self.emptyState_hideDelay
+                      options:0
                    animations:^
-   {
-     self.emptyState_view.alpha = 0.0;
-   } completion:^(BOOL finished) {
-     [self.emptyState_view removeFromSuperview];
-
-     if ([self.emptyState_delegate respondsToSelector:@selector(collectionView:didRemoveEmptyStateOverlayView:)]) {
-       [self.emptyState_delegate collectionView:self
-                 didRemoveEmptyStateOverlayView:self.emptyState_view];
-     }
-   }];
+  {
+    @strongify(self)
+    self.emptyState_view.alpha = 0.0;
+  } completion:^(BOOL finished) {
+    @strongify(self)
+    [self.emptyState_view removeFromSuperview];
+    if ([self.emptyState_delegate respondsToSelector:@selector(collectionView:didRemoveEmptyStateOverlayView:)]) {
+      [self.emptyState_delegate collectionView:self
+                didRemoveEmptyStateOverlayView:self.emptyState_view];
+    }
+  }];
 }
 
 - (UIImageView*) setEmptyStateImageViewWithImage:(UIImage*) image
