@@ -4,6 +4,9 @@ Want to display an arbitrary `UIView` on your `UICollectionView` when in an *emp
 
 ##What's new
 
+* 1.0.6
+  * Checks the animation keys for the `emptyState_view` explicitly so should protect against multiple nested add/remove operations and generally smoother operation.
+
 * 1.0.5
   * Added `emptyState_showDelay` and `emptyState_hideDelay` properties to add a delay to show/hide of the overlay.
   * Possibly fixed a retain cycle-related crash issue.
