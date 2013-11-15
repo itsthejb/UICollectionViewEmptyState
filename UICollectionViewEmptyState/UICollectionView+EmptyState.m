@@ -97,13 +97,16 @@ SYNTHESIZE_ASC_OBJ_BLOCK(emptyState_view,
     totalItems += [self.dataSource collectionView:self numberOfItemsInSection:section];
   }
 
+  // view may already be animating
+  BOOL animating = [self.emptyState_view.layer.animationKeys containsObject:@"opacity"];
+
   if (totalItems) {
     // remove
-    if (self.emptyState_view.superview) {
+    if (self.emptyState_view.superview && !animating) {
       [self __empty_layoutRemoveView];
     }
   } else {
-    if (!self.emptyState_view.superview) {
+    if (!self.emptyState_view.superview && !animating) {
       [self __empty_layoutAddViewItems:totalItems section:numberOfSections];
     }
   }
