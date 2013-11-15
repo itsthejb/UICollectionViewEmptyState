@@ -4,6 +4,9 @@ Want to display an arbitrary `UIView` on your `UICollectionView` when in an *emp
 
 ##What's new
 
+* 1.0.7
+  * Fixed missing QuartzCore import.
+
 * 1.0.6
   * Checks the animation keys for the `emptyState_view` explicitly so should protect against multiple nested add/remove operations and generally smoother operation.
 
