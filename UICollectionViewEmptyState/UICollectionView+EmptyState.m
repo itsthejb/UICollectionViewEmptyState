@@ -97,13 +97,16 @@ SYNTHESIZE_ASC_OBJ_BLOCK(emptyState_view,
     totalItems += [self.dataSource collectionView:self numberOfItemsInSection:section];
   }
 
+  // view may already be animating
+  BOOL animating = [self.emptyState_view.layer.animationKeys containsObject:@"opacity"];
+
   if (totalItems) {
     // remove
-    if (self.emptyState_view.superview) {
+    if (self.emptyState_view.superview && !animating) {
       [self __empty_layoutRemoveView];
     }
   } else {
-    if (!self.emptyState_view.superview) {
+    if (!self.emptyState_view.superview && !animating) {
       [self __empty_layoutAddViewItems:totalItems section:numberOfSections];
     }
   }
@@ -164,7 +167,7 @@ SYNTHESIZE_ASC_OBJ_BLOCK(emptyState_view,
     @weakify(self)
     [UIView animateWithDuration:self.emptyState_showAnimationDuration
                           delay:self.emptyState_showDelay
-                        options:0
+                        options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^
     {
       @strongify(self)
@@ -193,7 +196,7 @@ SYNTHESIZE_ASC_OBJ_BLOCK(emptyState_view,
   @weakify(self)
   [UIView animateWithDuration:self.emptyState_hideAnimationDuration
                         delay:self.emptyState_hideDelay
-                      options:0
+                      options:UIViewAnimationOptionBeginFromCurrentState
                    animations:^
   {
     @strongify(self)
