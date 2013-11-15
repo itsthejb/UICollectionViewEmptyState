@@ -23,6 +23,7 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
+#import <QuartzCore/QuartzCore.h>
 #import "UICollectionView+EmptyState.h"
 #import "ObjcAssociatedObjectHelpers.h"
 #import "EXTSwizzle.h"

@@ -11,11 +11,13 @@ Pod::Spec.new do |s|
   s.dependency      'libextobjc/EXTScope'
   s.dependency      'ObjcAssociatedObjectHelpers'
   s.dependency      'BlocksKit'
+  s.frameworks    = 'QuartzCore'
   s.homepage      = 'https://github.com/itsthejb/UICollectionViewEmptyState'
   s.platform      = :ios, '6.0'
   s.requires_arc  = true
-  s.source       = { 
+  s.source       = {
                     :git => "https://github.com/itsthejb/UICollectionViewEmptyState.git",
-                    :tag => "v" + s.version.to_s }
+                    :tag => "v" + s.version.to_s 
+                    }
   s.source_files = 'UICollectionViewEmptyState/*.{h,m}'
 end
