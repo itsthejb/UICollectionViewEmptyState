@@ -50,6 +50,12 @@
 /** Fade out animation duration. 0.0 = no animation */
 @property (nonatomic, assign) NSTimeInterval emptyState_hideAnimationDuration;
 
+/** Delay before displaying the overlay */
+@property (nonatomic, assign) NSTimeInterval emptyState_showDelay;
+
+/** Delay before removing the overlay */
+@property (nonatomic, assign) NSTimeInterval emptyState_hideDelay;
+
 /** Further customisation */
 @property (nonatomic, unsafe_unretained) id <UICollectionViewEmptyStateDelegate> emptyState_delegate;
 
