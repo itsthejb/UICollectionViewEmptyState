@@ -167,7 +167,7 @@ SYNTHESIZE_ASC_OBJ_BLOCK(emptyState_view,
     @weakify(self)
     [UIView animateWithDuration:self.emptyState_showAnimationDuration
                           delay:self.emptyState_showDelay
-                        options:0
+                        options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^
     {
       @strongify(self)
@@ -196,7 +196,7 @@ SYNTHESIZE_ASC_OBJ_BLOCK(emptyState_view,
   @weakify(self)
   [UIView animateWithDuration:self.emptyState_hideAnimationDuration
                         delay:self.emptyState_hideDelay
-                      options:0
+                      options:UIViewAnimationOptionBeginFromCurrentState
                    animations:^
   {
     @strongify(self)
