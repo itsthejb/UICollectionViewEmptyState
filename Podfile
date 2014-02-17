@@ -2,8 +2,8 @@ platform :ios, '6.0'
 
 pod 'BlocksKit'
 pod 'ObjcAssociatedObjectHelpers'
-pod 'libextobjc/EXTSwizzle'
-pod 'libextobjc/EXTScope'
+pod 'libextobjc/EXTSwizzle', '0.3'
+pod 'libextobjc/EXTScope', '0.3'
 
 target :Tests do
   pod 'TestPilot/Core-iOS', '0.0.5'
