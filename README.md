@@ -4,6 +4,9 @@ Want to display an arbitrary `UIView` on your `UICollectionView` when in an *emp
 
 ##What's new
 
+* 1.0.8
+  * Updated depedencies for changes in `libextobjc`.
+
 * 1.0.7
   * Fixed missing QuartzCore import.
 
