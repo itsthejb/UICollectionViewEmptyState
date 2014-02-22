@@ -26,7 +26,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "UICollectionView+EmptyState.h"
 #import "ObjcAssociatedObjectHelpers.h"
-#import "EXTSwizzle.h"
+#import "JRSwizzle.h"
 #import "EXTScope.h"
 
 @interface UICollectionView (EmptyStatePrivate)
@@ -63,10 +63,11 @@ SYNTHESIZE_ASC_OBJ_BLOCK(emptyState_view,
 {
   static BOOL __segue_swizzled = NO;
   if (!__segue_swizzled) {
-    EXT_SWIZZLE_INSTANCE_METHODS(UICollectionView,
-                                 layoutSubviews,
-                                 __empty_layoutSubviews,
-                                 __empty_layoutSubviews_original);
+    NSError *e = nil;
+    [UICollectionView jr_swizzleMethod:@selector(layoutSubviews)
+                            withMethod:@selector(__empty_layoutSubviews)
+                                 error:&e];
+    NSAssert(!e, e.localizedDescription);
     __segue_swizzled = YES;
   }
   // remove any existing view
@@ -74,7 +75,7 @@ SYNTHESIZE_ASC_OBJ_BLOCK(emptyState_view,
 });
 
 - (void) __empty_layoutSubviews {
-  [self __empty_layoutSubviews_original];
+  [self __empty_layoutSubviews];
 
   // section header respect requires UICollectionViewDelegateFlowLayout right now...
   if (self.emptyState_view && self.emptyState_shouldRespectSectionHeader &&
