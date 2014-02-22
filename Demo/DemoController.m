@@ -8,7 +8,7 @@
 
 #import "DemoController.h"
 #import "DemoCell.h"
-#import "UIControl+BlocksKit.h"
+#import "UIControl+Blockskit.h"
 #import "UICollectionView+EmptyState.h"
 
 @interface DemoController () <UICollectionViewDelegateFlowLayout>
