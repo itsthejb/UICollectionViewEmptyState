@@ -4,6 +4,10 @@ Want to display an arbitrary `UIView` on your `UICollectionView` when in an *emp
 
 ##What's new
 
+* 1.0.9
+  * Removed unnecessary BlocksKit dependency in Podspec.
+  * Currently some issues running the specs, it seems. Will fix when I have more time.
+
 * 1.0.8
   * Updated depedencies for changes in `libextobjc`.
 
