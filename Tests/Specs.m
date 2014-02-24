@@ -7,7 +7,8 @@
 //
 
 #import <SenTestingKit/SenTestingKit.h>
-#import "TestPilot.h"
+#define EXP_SHORTHAND
+#import "Expecta.h"
 #import "Specta.h"
 #import "UICollectionView+EmptyState.h"
 

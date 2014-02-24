@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name          = 'UICollectionViewEmptyState'
-  s.version       = '1.0.8'
+  s.version       = '1.0.9'
   s.summary       = 'Set-and-forget overlays for empty UICollectionViews.'
   s.license       = { :type => 'MIT',
                       :text => %Q|Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:\n| +
@@ -9,8 +9,7 @@ Pod::Spec.new do |s|
   s.author       = { "Jonathan Crooke" => "joncrooke@gmail.com" }
   s.dependency      'libextobjc/EXTSwizzle', '0.3'
   s.dependency      'libextobjc/EXTScope', '0.3'
-  s.dependency      'ObjcAssociatedObjectHelpers'
-  s.dependency      'BlocksKit'
+  s.dependency      'ObjcAssociatedObjectHelpers', '1.2.0'
   s.frameworks    = 'QuartzCore'
   s.homepage      = 'https://github.com/itsthejb/UICollectionViewEmptyState'
   s.platform      = :ios, '6.0'

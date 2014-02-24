@@ -8,7 +8,7 @@
 
 #import "DemoController.h"
 #import "DemoCell.h"
-#import "BlocksKit.h"
+#import "UIControl+BlocksKit.h"
 #import "UICollectionView+EmptyState.h"
 
 @interface DemoController () <UICollectionViewDelegateFlowLayout>
@@ -27,15 +27,15 @@
 
   __weak DemoController *weakSelf = self;
 
-  [self.sectionStepper addEventHandler:^(id sender) {
+  [self.sectionStepper bk_addEventHandler:^(id sender) {
     [weakSelf.collectionView reloadData];
   } forControlEvents:UIControlEventValueChanged];
 
-  [self.itemStepper addEventHandler:^(id sender) {
+  [self.itemStepper bk_addEventHandler:^(id sender) {
     [weakSelf.collectionView reloadData];
   } forControlEvents:UIControlEventValueChanged];
 
-  [self.decoratorSwitch addEventHandler:^(id sender) {
+  [self.decoratorSwitch bk_addEventHandler:^(id sender) {
     [weakSelf.collectionView reloadData];
   } forControlEvents:UIControlEventValueChanged];
 
