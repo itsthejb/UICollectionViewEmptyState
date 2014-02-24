@@ -9,7 +9,7 @@ Pod::Spec.new do |s|
   s.author       = { "Jonathan Crooke" => "joncrooke@gmail.com" }
   s.dependency      'libextobjc/EXTSwizzle', '0.3'
   s.dependency      'libextobjc/EXTScope', '0.3'
-  s.dependency      'ObjcAssociatedObjectHelpers'
+  s.dependency      'ObjcAssociatedObjectHelpers', '1.2.0'
   s.frameworks    = 'QuartzCore'
   s.homepage      = 'https://github.com/itsthejb/UICollectionViewEmptyState'
   s.platform      = :ios, '6.0'
