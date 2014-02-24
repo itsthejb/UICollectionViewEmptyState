@@ -61,6 +61,7 @@ SYNTHESIZE_ASC_OBJ_BLOCK(emptyState_view,
                          ^{},
                          ^
 {
+  /*
   static BOOL __segue_swizzled = NO;
   if (!__segue_swizzled) {
     NSError *e = nil;
@@ -72,6 +73,7 @@ SYNTHESIZE_ASC_OBJ_BLOCK(emptyState_view,
   }
   // remove any existing view
   [self.emptyState_view removeFromSuperview];
+   */
 });
 
 - (void) __empty_layoutSubviews {
