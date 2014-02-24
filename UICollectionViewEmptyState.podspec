@@ -10,7 +10,6 @@ Pod::Spec.new do |s|
   s.dependency      'libextobjc/EXTSwizzle', '0.3'
   s.dependency      'libextobjc/EXTScope', '0.3'
   s.dependency      'ObjcAssociatedObjectHelpers'
-  s.dependency      'BlocksKit'
   s.frameworks    = 'QuartzCore'
   s.homepage      = 'https://github.com/itsthejb/UICollectionViewEmptyState'
   s.platform      = :ios, '6.0'

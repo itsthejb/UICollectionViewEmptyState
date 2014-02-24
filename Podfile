@@ -1,7 +1,7 @@
 platform :ios, '6.0'
 
-pod 'BlocksKit'
 pod 'ObjcAssociatedObjectHelpers'
+pod 'BlocksKit', '2.0.0'
 pod 'libextobjc/EXTSwizzle', '0.3'
 pod 'libextobjc/EXTScope', '0.3'
 
