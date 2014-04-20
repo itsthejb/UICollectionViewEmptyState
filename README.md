@@ -1,12 +1,21 @@
+[![Build Status](https://travis-ci.org/itsthejb/UICollectionViewEmptyState.svg?branch=develop)](https://travis-ci.org/itsthejb/UICollectionViewEmptyState)
+[![Build Status](https://travis-ci.org/itsthejb/UICollectionViewEmptyState.svg?branch=master)](https://travis-ci.org/itsthejb/UICollectionViewEmptyState)
+
 #UICollectionView+EmptyState
 
 Want to display an arbitrary `UIView` on your `UICollectionView` when in an *empty* state, and in a loosely-coupled fashion? Look no further.
 
 ##What's new
 
+* 1.1.0
+  * Much-needed spring clean.
+  * Properly respects the collection view's `contentInsets` for better iOS 7 compatibility.
+  * Accesses the collection view's section 0 header view directly for more robust layout with `emptyState_shouldRespectSectionHeader`.
+  * Scrolling of the collection view is now disabled when the overlay is visible.
+  * Scrolls the collection back to the top when the overlay is presented.
+
 * 1.0.9
-  * Removed unnecessary BlocksKit dependency in Podspec.
-  * Currently some issues running the specs, it seems. Will fix when I have more time.
+  * Dependency updates.
 
 * 1.0.8
   * Updated depedencies for changes in `libextobjc`.
@@ -37,7 +46,6 @@ Want to display an arbitrary `UIView` on your `UICollectionView` when in an *emp
 	* Added `setEmptyStateImageViewWithImage:`.
 * 0.0.1 - Initial release
 
-
 ##Usage
 
 `#import "UICollectionView+EmptyState.h"` and simply set the property `emptyState_view` on your `UICollectionView` instance. We do the rest. Note that your view will be resized to overlay the `UICollectionView` so be sure to properly configure beforehand.
@@ -49,10 +57,6 @@ Want to display an arbitrary `UIView` on your `UICollectionView` when in an *emp
 * **@property (nonatomic, assign) NSTimeInterval emptyState_showAnimationDuration;**, **@property (nonatomic, assign) NSTimeInterval emptyState_hideAnimationDuration;** the overlay can be faded in and out using these properties. Set either to 0 for no animation.
 * `UICollectionViewEmptyStateDelegate` protocol can be used for further customisation of the view as it's added and removed.
 * A convenience method `setEmptyStateImageViewWithImage:` creates a `UIImageView` with the provided image, sets it as `emptyState_view`, and returns it for any further customisation required.
-
-##Notes
-
-`UICollectionView` is a complex beast, and there are quite likely to be edge cases I haven't considered here. If you find a gremlin, please let me know!
 
 **Have fun!**
 
