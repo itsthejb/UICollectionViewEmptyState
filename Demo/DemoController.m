@@ -8,7 +8,7 @@
 
 #import "DemoController.h"
 #import "DemoCell.h"
-#import "UIControl+Blockskit.h"
+#import "BlocksKit+UIKit.h"
 #import "UICollectionView+EmptyState.h"
 
 @interface DemoController () <UICollectionViewDelegateFlowLayout>
@@ -16,6 +16,8 @@
 @property (strong, nonatomic) IBOutlet UIStepper *itemStepper;
 @property (strong, nonatomic) IBOutlet UISwitch *decoratorSwitch;
 @property (strong, nonatomic) IBOutlet UILabel *emptyView;
+- (IBAction)sectionHeaderButtonPressed:(UIBarButtonItem *)sender;
+- (IBAction)insetsButtonPressed:(UIBarButtonItem *)sender;
 @end
 
 @implementation DemoController
@@ -39,21 +41,50 @@
     [weakSelf.collectionView reloadData];
   } forControlEvents:UIControlEventValueChanged];
 
-  self.toolbarItems = @[[[UIBarButtonItem alloc] initWithCustomView:self.sectionStepper],
+  self.toolbarItems = @[
+                        [[UIBarButtonItem alloc] initWithTitle:@"Secs"
+                                                         style:UIBarButtonItemStylePlain
+                                                        target:nil
+                                                        action:nil],
+                        [[UIBarButtonItem alloc] initWithCustomView:self.sectionStepper],
                         [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
                                                                       target:nil
                                                                       action:nil],
-                        [[UIBarButtonItem alloc] initWithCustomView:self.decoratorSwitch],
-                        [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
-                                                                      target:nil
-                                                                      action:nil],
+//                        [[UIBarButtonItem alloc] initWithCustomView:self.decoratorSwitch],
+//                        [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
+//                                                                      target:nil
+//                                                                      action:nil],
+                        [[UIBarButtonItem alloc] initWithTitle:@"Rows"
+                                                         style:UIBarButtonItemStylePlain
+                                                        target:nil
+                                                        action:nil],
                         [[UIBarButtonItem alloc] initWithCustomView:self.itemStepper]];
+/*
+  self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]
+                                            bk_initWithTitle:@"Header"
+                                            style:UIBarButtonItemStylePlain
+                                            handler:^(id sender)
+  {
+  }];
+ */
 
   // configure empty view
   self.collectionView.emptyState_view = self.emptyView;
   self.collectionView.emptyState_showAnimationDuration = 0.3;
   self.collectionView.emptyState_hideAnimationDuration = 0.3;
   self.collectionView.emptyState_shouldRespectSectionHeader = YES;
+}
+
+- (IBAction)sectionHeaderButtonPressed:(UIBarButtonItem *)sender {
+  self.collectionView.emptyState_shouldRespectSectionHeader =
+  !self.collectionView.emptyState_shouldRespectSectionHeader;
+}
+
+- (IBAction)insetsButtonPressed:(UIBarButtonItem*)sender {
+  self.edgesForExtendedLayout = (self.edgesForExtendedLayout == UIRectEdgeNone ?
+                                 UIRectEdgeTop & UIRectEdgeBottom :
+                                 UIRectEdgeNone);
+  [self.collectionView reloadData];
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {

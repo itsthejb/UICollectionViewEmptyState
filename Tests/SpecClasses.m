@@ -45,17 +45,30 @@
 #pragma mark -
 
 @implementation SpecCallBackController
-- (void)collectionView:(UICollectionView *)collectionView didAddEmptyStateOverlayView:(UIView *)view {
+- (void)      collectionView:(UICollectionView *)collectionView
+ didAddEmptyStateOverlayView:(UIView *)view
+{
   self.didReceiveDidAddCallBack = YES;
 }
-- (void)collectionView:(UICollectionView *)collectionView didRemoveEmptyStateOverlayView:(UIView *)view {
+- (void)          collectionView:(UICollectionView *)collectionView
+  didRemoveEmptyStateOverlayView:(UIView *)view {
   self.didReceiveDidRemoveCallBack = YES;
 }
-- (void)collectionView:(UICollectionView *)collectionView willAddEmptyStateOverlayView:(UIView *)view animated:(BOOL)animated {
+- (void)        collectionView:(UICollectionView *)collectionView
+  willAddEmptyStateOverlayView:(UIView *)view
+                      animated:(BOOL)animated
+{
   self.didReceiveWillAddCallBack = YES;
 }
-- (void)collectionView:(UICollectionView *)collectionView willRemoveEmptyStateOverlayView:(UIView *)view animated:(BOOL)animated
+- (void)          collectionView:(UICollectionView *)collectionView
+ willRemoveEmptyStateOverlayView:(UIView *)view
+                        animated:(BOOL)animated
 {
   self.didReceiveWillRemoveCallBack = YES;
 }
+@end
+
+#pragma mark -
+
+@implementation SpecView
 @end

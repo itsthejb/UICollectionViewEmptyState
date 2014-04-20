@@ -21,3 +21,6 @@
 @property (nonatomic, assign) BOOL didReceiveWillRemoveCallBack;
 @property (nonatomic, assign) BOOL didReceiveDidRemoveCallBack;
 @end
+
+@interface SpecView : UIView
+@end

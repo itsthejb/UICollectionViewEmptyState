@@ -36,7 +36,7 @@
 		49AB917417425BE900A105F0 /* UICollectionView+EmptyState.m in Sources */ = {isa = PBXBuildFile; fileRef = 49626847174230E700B77E50 /* UICollectionView+EmptyState.m */; };
 		49AB917517425BFC00A105F0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4962682717422F5E00B77E50 /* CoreGraphics.framework */; };
 		49C9482E18BB54B0003CFD84 /* SpecClasses.m in Sources */ = {isa = PBXBuildFile; fileRef = 49C9482D18BB54B0003CFD84 /* SpecClasses.m */; };
-		49FD782E18BB560900995E3C /* SpecsOld.m in Sources */ = {isa = PBXBuildFile; fileRef = 49AB916D17424D3D00A105F0 /* SpecsOld.m */; };
+		49FD782E18BB560900995E3C /* Specs.m in Sources */ = {isa = PBXBuildFile; fileRef = 49AB916D17424D3D00A105F0 /* Specs.m */; };
 		BF8D4C1E083A4F16AF4AFF01 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 70E28A7E23024606B34D88C3 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -74,13 +74,12 @@
 		49AB916217424D3D00A105F0 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		49AB916817424D3D00A105F0 /* Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Tests-Info.plist"; sourceTree = "<group>"; };
 		49AB916A17424D3D00A105F0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		49AB916D17424D3D00A105F0 /* SpecsOld.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpecsOld.m; sourceTree = "<group>"; };
+		49AB916D17424D3D00A105F0 /* Specs.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Specs.m; sourceTree = "<group>"; };
 		49AB916F17424D3D00A105F0 /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
 		49AB917717428D3B00A105F0 /* UICollectionViewEmptyState.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = UICollectionViewEmptyState.podspec; sourceTree = "<group>"; };
 		49AB91781742981700A105F0 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		49C9482C18BB54B0003CFD84 /* SpecClasses.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpecClasses.h; sourceTree = "<group>"; };
 		49C9482D18BB54B0003CFD84 /* SpecClasses.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpecClasses.m; sourceTree = "<group>"; };
-		49C9482F18BB551C003CFD84 /* Specs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Specs.m; sourceTree = "<group>"; };
 		50D6B30A078F4D1EBDC8407E /* libPods-Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		70E28A7E23024606B34D88C3 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B19C143EA6134B42A4F8E236 /* Pods-Tests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests.xcconfig"; path = "Pods/Pods-Tests.xcconfig"; sourceTree = SOURCE_ROOT; };
@@ -207,8 +206,7 @@
 				49AB916717424D3D00A105F0 /* Supporting Files */,
 				49C9482C18BB54B0003CFD84 /* SpecClasses.h */,
 				49C9482D18BB54B0003CFD84 /* SpecClasses.m */,
-				49C9482F18BB551C003CFD84 /* Specs.m */,
-				49AB916D17424D3D00A105F0 /* SpecsOld.m */,
+				49AB916D17424D3D00A105F0 /* Specs.m */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -425,7 +423,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				49C9482E18BB54B0003CFD84 /* SpecClasses.m in Sources */,
-				49FD782E18BB560900995E3C /* SpecsOld.m in Sources */,
+				49FD782E18BB560900995E3C /* Specs.m in Sources */,
 				49AB917417425BE900A105F0 /* UICollectionView+EmptyState.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

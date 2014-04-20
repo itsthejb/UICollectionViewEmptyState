@@ -1,48 +1,120 @@
 //
-//  Specs.m
-//  UICollectionViewEmptyState
+//  Tests.m
+//  Tests
 //
-//  Created by Jonathan Crooke on 24/02/2014.
-//  Copyright (c) 2014 Jon Crooke. All rights reserved.
+//  Created by Jonathan Crooke on 14/05/2013.
+//  Copyright (c) 2013 Jon Crooke. All rights reserved.
 //
-
-#import "SpecClasses.h"
-#import "UICollectionView+EmptyState.h"
 
 #define EXP_SHORTHAND
 #import "Expecta.h"
 #import "Specta.h"
+#import "UICollectionView+EmptyState.h"
+#import "SpecClasses.h"
 
-SpecBegin(Specs)
+#pragma mark -
 
-__block SpecCollectionController *controller = nil;
-__block SpecCallBackController *callbacks = nil;
+SpecBegin(Specs);
 
-__block UICollectionViewFlowLayout *layout = nil;
-__block UIView *emptyView = nil;
+describe(@"simple case", ^{
 
-before(^{
-  controller = [[SpecCollectionController alloc]
-                initWithCollectionViewLayout:[[UICollectionViewFlowLayout alloc] init]];
-  layout = (id) controller.collectionView.collectionViewLayout;
-  [controller loadView];
+  __block SpecCollectionController *controller = nil;
+  __block SpecCallBackController *callbacks = nil;
 
-  return ;
-  callbacks = [[SpecCallBackController alloc] init];
+  UICollectionViewFlowLayout*(^layout)(void) = ^{
+    return (UICollectionViewFlowLayout*) controller.collectionViewLayout;
+  };
 
-  emptyView = [[UIView alloc] init];
+  UIView*(^emptyView)(void) = ^ {
+    return controller.collectionView.emptyState_view;
+  };
 
-  [controller.collectionView registerClass:[UICollectionViewCell class]
-                forCellWithReuseIdentifier:@"Foo"];
-  [controller.collectionView registerClass:[UICollectionReusableView class]
-                forSupplementaryViewOfKind:UICollectionElementKindSectionHeader
-                       withReuseIdentifier:@"Bar"];
+  beforeAll(^{
+    controller = [[SpecCollectionController alloc]
+                  initWithCollectionViewLayout:[[UICollectionViewFlowLayout alloc] init]];
 
-  //\    controller.collectionView.emptyState_view = emptyView;
-});
+    callbacks = [[SpecCallBackController alloc] init];
 
-it(@"should", ^{
-  expect(YES).to.equal(YES);
+    [controller.collectionView registerClass:[UICollectionViewCell class]
+                  forCellWithReuseIdentifier:@"Foo"];
+    [controller.collectionView registerClass:[UICollectionReusableView class]
+                  forSupplementaryViewOfKind:UICollectionElementKindSectionHeader
+                         withReuseIdentifier:@"Bar"];
+
+    controller.collectionView.emptyState_view = [[SpecView alloc] init];
+  });
+
+  it(@"should be set up correctly for testing", ^{
+    expect(layout()).to.beInstanceOf([UICollectionViewFlowLayout class]);
+    expect(controller.collectionView.emptyState_view).to.equal(emptyView());
+    expect(controller.isViewLoaded).to.beTruthy;
+  });
+
+  it(@"should not display overlay with content", ^{
+    controller.numberOfSectionItems = 10;
+    controller.numberOfSections = 10;
+    [controller.collectionView layoutSubviews];
+
+    expect(emptyView().superview).toNot.equal(controller.collectionView);
+  });
+
+  it(@"should display overlay with no content, covering entire collection view", ^{
+    controller.numberOfSectionItems = 0;
+    controller.numberOfSections = 0;
+    [controller.collectionView layoutSubviews];
+
+    expect(emptyView().superview).equal(controller.collectionView);
+    expect(emptyView().frame).to.equal(controller.collectionView.bounds);
+  });
+
+  it(@"should not overlay the first section header if option is set", ^{
+    controller.numberOfSectionItems = 0;
+    controller.numberOfSections = 10;
+    controller.collectionView.emptyState_shouldRespectSectionHeader = YES;
+    controller.displaysSectionHeader = YES;
+    [controller.collectionView layoutSubviews];
+
+    expect(emptyView().superview).to.equal(controller.collectionView);
+
+    expect(emptyView().frame.origin).notTo.equal(controller.collectionView.bounds.origin);
+    UICollectionReusableView *headerView = [controller collectionView:controller.collectionView
+                                    viewForSupplementaryElementOfKind:UICollectionElementKindSectionHeader
+                                                          atIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]];
+    expect(CGRectIntersectsRect(headerView.frame, emptyView().frame)).to.beFalsy;
+  });
+
+  it(@"should call delegate methods", ^{
+    controller.collectionView.emptyState_delegate = callbacks;
+    callbacks.didReceiveWillRemoveCallBack = NO;
+    callbacks.didReceiveWillAddCallBack = NO;
+    callbacks.didReceiveDidAddCallBack = NO;
+    callbacks.didReceiveDidRemoveCallBack = NO;
+
+    controller.numberOfSectionItems = 0;
+    controller.numberOfSections = 0;
+    [controller.collectionView layoutSubviews];
+
+    expect(callbacks.didReceiveWillAddCallBack).to.beTruthy;
+    expect(callbacks.didReceiveWillRemoveCallBack).to.beTruthy;
+    expect(callbacks.didReceiveDidAddCallBack).to.beFalsy;
+    expect(callbacks.didReceiveDidRemoveCallBack).to.beFalsy;
+
+    callbacks.didReceiveWillRemoveCallBack = NO;
+    callbacks.didReceiveWillAddCallBack = NO;
+    callbacks.didReceiveDidAddCallBack = NO;
+    callbacks.didReceiveDidRemoveCallBack = NO;
+
+    controller.numberOfSectionItems = 10;
+    controller.numberOfSections = 10;
+    [controller.collectionView layoutSubviews];
+
+    expect(callbacks.didReceiveWillAddCallBack).to.beFalsy;
+    expect(callbacks.didReceiveWillRemoveCallBack).to.beFalsy;
+    expect(callbacks.didReceiveDidAddCallBack).to.beTruthy;
+    expect(callbacks.didReceiveDidRemoveCallBack).to.beTruthy;
+  });
 });
 
 SpecEnd
+
+
