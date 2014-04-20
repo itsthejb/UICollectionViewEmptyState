@@ -3,10 +3,12 @@ language: objective-c
 xcode_workspace: UICollectionViewEmptyState.xcworkspace
 xcode_scheme: Tests
 
+before_script:
+  - export LANG=en_US.UTF-8
+  
 before_install: 
     - brew unlink xctool
     - brew install xctool --HEAD
-    - export LC_ALL="en_US.UTF-8"
     - gem install cocoapods
 
 script: xctool -workspace UICollectionViewEmptyState.xcworkspace -scheme Tests -sdk iphonesimulator test
