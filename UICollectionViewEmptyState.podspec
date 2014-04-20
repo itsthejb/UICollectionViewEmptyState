@@ -8,8 +8,9 @@ Pod::Spec.new do |s|
                                %Q|THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE| }
   s.author       = { "Jonathan Crooke" => "joncrooke@gmail.com" }
   s.dependency      'JRSwizzle', '1.0'
-  s.dependency      'libextobjc/EXTScope', '0.3'
-  s.dependency      'ObjcAssociatedObjectHelpers', '1.2.0'
+  s.dependency      'libextobjc/EXTScope', '0.4'
+  s.dependency      'ObjcAssociatedObjectHelpers', '1.2.1'
+  s.dependency      'BlocksKit', '2.2.2'
   s.frameworks    = 'QuartzCore'
   s.homepage      = 'https://github.com/itsthejb/UICollectionViewEmptyState'
   s.platform      = :ios, '6.0'
