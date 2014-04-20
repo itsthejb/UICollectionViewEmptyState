@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/itsthejb/UICollectionViewEmptyState.svg?branch=develop)](https://travis-ci.org/itsthejb/UICollectionViewEmptyState)
+[![Build Status](https://travis-ci.org/itsthejb/UICollectionViewEmptyState.svg?branch=master)](https://travis-ci.org/itsthejb/UICollectionViewEmptyState)
+
 #UICollectionView+EmptyState
 
 Want to display an arbitrary `UIView` on your `UICollectionView` when in an *empty* state, and in a loosely-coupled fashion? Look no further.
