@@ -3,9 +3,9 @@ language: objective-c
 xcode_workspace: UICollectionViewEmptyState.xcworkspace
 xcode_scheme: Tests
 
-before_script:
+before_install:
   - export LANG=en_US.UTF-8
-  
+    
 before_install: 
     - brew unlink xctool
     - brew install xctool --HEAD
