@@ -69,6 +69,7 @@
 		4962683F17422F5E00B77E50 /* DemoController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DemoController.m; sourceTree = "<group>"; };
 		49626846174230E700B77E50 /* UICollectionView+EmptyState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UICollectionView+EmptyState.h"; sourceTree = "<group>"; };
 		49626847174230E700B77E50 /* UICollectionView+EmptyState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UICollectionView+EmptyState.m"; sourceTree = "<group>"; };
+		497093C9190E92C7002E3886 /* LICENSE.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		49AB913F17423D2E00A105F0 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		49AB916117424D3D00A105F0 /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		49AB916217424D3D00A105F0 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
@@ -136,6 +137,7 @@
 				4962682117422F5E00B77E50 /* Products */,
 				49AB917317424E4700A105F0 /* CocoaPods */,
 				49AB91781742981700A105F0 /* README.md */,
+				497093C9190E92C7002E3886 /* LICENSE.txt */,
 			);
 			sourceTree = "<group>";
 		};
