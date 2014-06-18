@@ -27,7 +27,7 @@
 #import "UICollectionView+EmptyState.h"
 #import "ObjcAssociatedObjectHelpers.h"
 #import "JRSwizzle.h"
-#import "EXTScope.h"
+//#import "EXTScope.h"
 
 @interface UICollectionView (EmptyStatePrivate)
 - (void) __empty_layoutSubviews;
