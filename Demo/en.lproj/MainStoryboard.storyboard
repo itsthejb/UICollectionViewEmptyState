@@ -143,7 +143,7 @@
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Empty View" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="zYO-CC-cA0" userLabel="Empty view">
                     <rect key="frame" x="0.0" y="0.0" width="42" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="0.88235294818878174" green="0.27843138575553894" blue="0.031372550874948502" alpha="0.80000000000000004" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="0.098039217293262482" green="0.56862747669219971" blue="0.44705882668495178" alpha="0.66000000000000003" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="60"/>
                     <color key="textColor" red="0.68627452850341797" green="0.7137255072593689" blue="0.73333334922790527" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>

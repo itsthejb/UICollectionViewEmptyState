@@ -90,7 +90,6 @@
 			isa = PBXGroup;
 			children = (
 				495CB7F71A9F17E0000E3F2F /* Podfile */,
-				49CB451F1A9F48B700482845 /* UICollectionViewEmptyState.podspec */,
 				6876F2AF094F34EAA3A09B1C /* Pods.debug.xcconfig */,
 				AFE61967A906FAC00904A0E1 /* Pods.release.xcconfig */,
 				004195FC1CE83B6D7B01E17D /* Pods-Tests.debug.xcconfig */,
@@ -107,8 +106,9 @@
 				495CB7B91A9F15C7000E3F2F /* Products */,
 				1C12949592D0142D6F716EF6 /* Pods */,
 				FD7FD80B3C1E98E7609F9A54 /* Frameworks */,
-				49629DCB1A9F4FDF00BA8910 /* LICENSE.txt */,
 				49629DCC1A9F4FDF00BA8910 /* README.md */,
+				49629DCB1A9F4FDF00BA8910 /* LICENSE.txt */,
+				49CB451F1A9F48B700482845 /* UICollectionViewEmptyState.podspec */,
 			);
 			sourceTree = "<group>";
 		};
