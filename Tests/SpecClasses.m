@@ -10,35 +10,32 @@
 
 @implementation SpecCollectionController
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-  return self.numberOfSections;
+	return self.numberOfSections;
 }
 - (NSInteger)collectionView:(UICollectionView *)collectionView
-     numberOfItemsInSection:(NSInteger)section
+		 numberOfItemsInSection:(NSInteger)section
 {
-  return self.numberOfSectionItems;
+	return self.numberOfSectionItems;
 }
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
-                  cellForItemAtIndexPath:(NSIndexPath *)indexPath
+									cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
   return [collectionView dequeueReusableCellWithReuseIdentifier:@"Foo"
                                                    forIndexPath:indexPath];
 }
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView
-           viewForSupplementaryElementOfKind:(NSString *)kind
-                                 atIndexPath:(NSIndexPath *)indexPath
+					 viewForSupplementaryElementOfKind:(NSString *)kind
+																 atIndexPath:(NSIndexPath *)indexPath
 {
-  if (self.displaysSectionHeader) {
-    return [collectionView dequeueReusableSupplementaryViewOfKind:kind
-                                              withReuseIdentifier:@"Bar"
-                                                     forIndexPath:indexPath];
-  }
-  return nil;
+	return [collectionView dequeueReusableSupplementaryViewOfKind:kind
+																						withReuseIdentifier:@"Bar"
+																									 forIndexPath:indexPath];
 }
 - (CGSize)        collectionView:(UICollectionView *)collectionView
-                          layout:(UICollectionViewLayout *)collectionViewLayout
+													layout:(UICollectionViewLayout *)collectionViewLayout
  referenceSizeForHeaderInSection:(NSInteger)section
 {
-  return CGSizeMake(320, 50);
+	return self.displaysSectionHeader ? CGSizeMake(320, 50) : CGSizeZero;
 }
 @end
 
@@ -48,23 +45,23 @@
 - (void)      collectionView:(UICollectionView *)collectionView
  didAddEmptyStateOverlayView:(UIView *)view
 {
-  self.didReceiveDidAddCallBack = YES;
+	self.didReceiveDidAddCallBack = YES;
 }
 - (void)          collectionView:(UICollectionView *)collectionView
-  didRemoveEmptyStateOverlayView:(UIView *)view {
-  self.didReceiveDidRemoveCallBack = YES;
+	didRemoveEmptyStateOverlayView:(UIView *)view {
+	self.didReceiveDidRemoveCallBack = YES;
 }
 - (void)        collectionView:(UICollectionView *)collectionView
-  willAddEmptyStateOverlayView:(UIView *)view
-                      animated:(BOOL)animated
+	willAddEmptyStateOverlayView:(UIView *)view
+											animated:(BOOL)animated
 {
-  self.didReceiveWillAddCallBack = YES;
+	self.didReceiveWillAddCallBack = YES;
 }
 - (void)          collectionView:(UICollectionView *)collectionView
  willRemoveEmptyStateOverlayView:(UIView *)view
-                        animated:(BOOL)animated
+												animated:(BOOL)animated
 {
-  self.didReceiveWillRemoveCallBack = YES;
+	self.didReceiveWillRemoveCallBack = YES;
 }
 @end
 
