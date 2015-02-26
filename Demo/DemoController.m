@@ -50,23 +50,11 @@
                         [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
                                                                       target:nil
                                                                       action:nil],
-//                        [[UIBarButtonItem alloc] initWithCustomView:self.decoratorSwitch],
-//                        [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
-//                                                                      target:nil
-//                                                                      action:nil],
                         [[UIBarButtonItem alloc] initWithTitle:@"Rows"
                                                          style:UIBarButtonItemStylePlain
                                                         target:nil
                                                         action:nil],
                         [[UIBarButtonItem alloc] initWithCustomView:self.itemStepper]];
-/*
-  self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]
-                                            bk_initWithTitle:@"Header"
-                                            style:UIBarButtonItemStylePlain
-                                            handler:^(id sender)
-  {
-  }];
- */
 
   // configure empty view
   self.collectionView.emptyState_view = self.emptyView;
