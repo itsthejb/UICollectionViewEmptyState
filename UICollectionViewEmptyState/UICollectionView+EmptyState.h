@@ -63,16 +63,37 @@
 
 #pragma mark -
 
+/**
+ *  Overlay life-cycle delegate protocol
+ */
 @protocol UICollectionViewEmptyStateDelegate <NSObject>
 @optional
+/**
+ *  Called when the overlay will be added to the collection view.
+ *  @note View has been added to the collection view at this point,
+ *  and method invoked from within the animation block.
+ */
 - (void)        collectionView:(UICollectionView*) collectionView
   willAddEmptyStateOverlayView:(UIView*) view
                       animated:(BOOL) animated;
-- (void)        collectionView:(UICollectionView*) collectionView
-   didAddEmptyStateOverlayView:(UIView*) view;
+
+/**
+ *  Called when the overlay will be removed from the collection view.
+ *  @note Invoked from within the animation block.
+ */
 - (void)          collectionView:(UICollectionView*) collectionView
  willRemoveEmptyStateOverlayView:(UIView*) view
                         animated:(BOOL) animated;
+
+/**
+ *  Called after the add animation (if any) has completed.
+ */
+- (void)        collectionView:(UICollectionView*) collectionView
+   didAddEmptyStateOverlayView:(UIView*) view;
+
+/**
+ *  Called after the remove animation (if any) has completed.
+ */
 - (void)          collectionView:(UICollectionView*) collectionView
   didRemoveEmptyStateOverlayView:(UIView*) view;
 @end

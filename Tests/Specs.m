@@ -1,9 +1,9 @@
 //
-//  Tests.m
-//  Tests
+//  Specs.m
+//  UICollectionViewEmptyState
 //
-//  Created by Jonathan Crooke on 14/05/2013.
-//  Copyright (c) 2013 Jon Crooke. All rights reserved.
+//  Created by Jonathan Crooke on 24/02/2014.
+//  Copyright (c) 2014 Jon Crooke. All rights reserved.
 //
 
 #define EXP_SHORTHAND
