@@ -5,7 +5,30 @@
 
 Want to display an arbitrary `UIView` on your `UICollectionView` when in an *empty* state, and in a loosely-coupled fashion? Look no further.
 
+##Usage
+
+`#import "UICollectionView+EmptyState.h"` and simply set the property `emptyState_view` on your `UICollectionView` instance. We do the rest. Note that your view will be resized to overlay the `UICollectionView` so be sure to properly configure beforehand.
+
+##Properties
+
+* `@property (nonatomic, strong) UIView *emptyState_view;` set your overlay view.
+* `@property (nonatomic, assign) BOOL emptyState_shouldRespectSectionHeader;` when used with `UICollectionViewFlowLayout`, setting this property to `YES` causes the overlay to be laid-out beneath the first section's header view. This would be useful if your first section's header contains controls that affect the collection's content in some way. We don't want to block those. The demo application has a switch in its header view to demonstrate that the section header will be available for user interaction.
+* `@property (nonatomic, assign) NSTimeInterval emptyState_showAnimationDuration;`, `@property (nonatomic, assign) NSTimeInterval emptyState_hideAnimationDuration;` the overlay can be faded in and out using these properties. Set either to 0 for no animation.
+* `UICollectionViewEmptyStateDelegate` protocol can be used for further customisation of the view as it's added and removed.
+* A convenience method `setEmptyStateImageViewWithImage:` creates a `UIImageView` with the provided image, sets it as `emptyState_view`, and returns it for any further customisation required.
+
+##Notes
+
+* The overlay does not rotate terribly well at this time.
+
 ##What's new
+
+* 1.2.0
+	* Proper overhaul with recreated project. No more test suite demons.
+	* `will~` delegate methods are now called from within animation blocks.
+  * Better sizing when respecting the collection's first section header. Takes account of header sizing for the layout *and* delegate. Does not access the actual header view at all.
+	* Demo is prettier and more functional.
+	* Tidying up podspec dependencies.
 
 * 1.1.0
   * Much-needed spring clean.
@@ -46,21 +69,12 @@ Want to display an arbitrary `UIView` on your `UICollectionView` when in an *emp
 	* Added `setEmptyStateImageViewWithImage:`.
 * 0.0.1 - Initial release
 
-##Usage
-
-`#import "UICollectionView+EmptyState.h"` and simply set the property `emptyState_view` on your `UICollectionView` instance. We do the rest. Note that your view will be resized to overlay the `UICollectionView` so be sure to properly configure beforehand.
-
-##Category properties
-
-* **@property (nonatomic, strong) UIView *emptyState_view;** set your overlay view.
-* **@property (nonatomic, assign) BOOL emptyState_shouldRespectSectionHeader;** when used with `UICollectionViewFlowLayout`, setting this property to `YES` causes the overlay to be laid-out beneath the first section's header view. This would be useful if your first section's header contains controls that affect the collection's content in some way. We don't want to block those.
-* **@property (nonatomic, assign) NSTimeInterval emptyState_showAnimationDuration;**, **@property (nonatomic, assign) NSTimeInterval emptyState_hideAnimationDuration;** the overlay can be faded in and out using these properties. Set either to 0 for no animation.
-* `UICollectionViewEmptyStateDelegate` protocol can be used for further customisation of the view as it's added and removed.
-* A convenience method `setEmptyStateImageViewWithImage:` creates a `UIImageView` with the provided image, sets it as `emptyState_view`, and returns it for any further customisation required.
-
+ 
 **Have fun!**
 
-<joncrooke@gmail.com>
+---
+
+<jon.crooke@gmail.com>
 
 
 
