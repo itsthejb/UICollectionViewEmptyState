@@ -90,10 +90,10 @@ SYNTHESIZE_ASC_OBJ_BLOCK(emptyState_view,
     totalItems += [self.dataSource collectionView:self numberOfItemsInSection:section];
   }
 
-
   // section header respect requires UICollectionViewDelegateFlowLayout right now...
   if (self.emptyState_view && self.emptyState_shouldRespectSectionHeader) {
-    NSAssert2([self.collectionViewLayout isKindOfClass:[UICollectionViewFlowLayout class]],
+    UICollectionViewFlowLayout *layout = (id) self.collectionViewLayout;
+    NSAssert2([layout isKindOfClass:[UICollectionViewFlowLayout class]],
               @"Only compatible with %@ when emptyState_shouldRespectSectionHeader = YES." \
               " Cannot be used with %@",
               NSStringFromClass([UICollectionViewFlowLayout class]),
@@ -105,17 +105,17 @@ SYNTHESIZE_ASC_OBJ_BLOCK(emptyState_view,
         [self.dataSource
          respondsToSelector:@selector(collectionView:viewForSupplementaryElementOfKind:atIndexPath:)])
     {
-      UIView *headerView = [self.dataSource collectionView:self
-                         viewForSupplementaryElementOfKind:UICollectionElementKindSectionHeader
-                                               atIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
-      if (headerView) {
-        CGRect slice;
-        CGRectDivide(bounds,
-                     &slice,
-                     &bounds,
-                     CGRectGetMaxY(headerView.frame),
-                     CGRectMinYEdge);
+      CGSize headerSize = layout.headerReferenceSize;
+
+      if ([self.delegate respondsToSelector:@selector(collectionView:layout:referenceSizeForHeaderInSection:)]) {
+        headerSize = [(id <UICollectionViewDelegateFlowLayout>) self.delegate
+                      collectionView:self.collectionViewLayout
+                      layout:layout
+                      referenceSizeForHeaderInSection:0];
       }
+
+      CGRect slice;
+      CGRectDivide(bounds, &slice, &bounds, headerSize.height, CGRectMinYEdge);
     }
   }
 
@@ -143,15 +143,6 @@ SYNTHESIZE_ASC_OBJ_BLOCK(emptyState_view,
   // add view
   if (self.emptyState_view.superview != self) {
 
-    // pre-display
-    if ([self.emptyState_delegate
-         respondsToSelector:@selector(collectionView:willAddEmptyStateOverlayView:animated:)])
-    {
-      [self.emptyState_delegate collectionView:self
-                  willAddEmptyStateOverlayView:self.emptyState_view
-                                      animated:!!self.emptyState_showAnimationDuration];
-    }
-
     // not visible, add
     self.emptyState_view.alpha = 0.0;
     [self addSubview:self.emptyState_view];
@@ -161,6 +152,15 @@ SYNTHESIZE_ASC_OBJ_BLOCK(emptyState_view,
                         options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^
      {
+       // pre-display
+       if ([self.emptyState_delegate
+            respondsToSelector:@selector(collectionView:willAddEmptyStateOverlayView:animated:)])
+       {
+         [self.emptyState_delegate collectionView:self
+                     willAddEmptyStateOverlayView:self.emptyState_view
+                                         animated:!!self.emptyState_showAnimationDuration];
+       }
+
        self.emptyState_view.alpha = 1.0;
      } completion:^(BOOL finished) {
        if ([self.emptyState_delegate
@@ -174,19 +174,19 @@ SYNTHESIZE_ASC_OBJ_BLOCK(emptyState_view,
 }
 
 - (void)__empty_layoutRemoveView {
-  if ([self.emptyState_delegate
-       respondsToSelector:@selector(collectionView:willRemoveEmptyStateOverlayView:animated:)])
-  {
-    [self.emptyState_delegate collectionView:self
-             willRemoveEmptyStateOverlayView:self.emptyState_view
-                                    animated:!!self.emptyState_hideAnimationDuration];
-  }
-
   [UIView animateWithDuration:self.emptyState_hideAnimationDuration
                         delay:self.emptyState_hideDelay
                       options:UIViewAnimationOptionBeginFromCurrentState
                    animations:^
    {
+     if ([self.emptyState_delegate
+          respondsToSelector:@selector(collectionView:willRemoveEmptyStateOverlayView:animated:)])
+     {
+       [self.emptyState_delegate collectionView:self
+                willRemoveEmptyStateOverlayView:self.emptyState_view
+                                       animated:!!self.emptyState_hideAnimationDuration];
+     }
+
      self.emptyState_view.alpha = 0.0;
    } completion:^(BOOL finished) {
      [self.emptyState_view removeFromSuperview];
