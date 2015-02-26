@@ -23,6 +23,8 @@ Want to display an arbitrary `UIView` on your `UICollectionView` when in an *emp
 
 ##What's new
 
+ * 1.2.1
+	* Fixed an incorrect pointer bug.
 * 1.2.0
 	* Proper overhaul with recreated project. No more test suite demons.
 	* `will~` delegate methods are now called from within animation blocks.

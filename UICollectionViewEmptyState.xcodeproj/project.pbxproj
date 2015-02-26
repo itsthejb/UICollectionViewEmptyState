@@ -107,8 +107,8 @@
 				1C12949592D0142D6F716EF6 /* Pods */,
 				FD7FD80B3C1E98E7609F9A54 /* Frameworks */,
 				49629DCC1A9F4FDF00BA8910 /* README.md */,
-				49629DCB1A9F4FDF00BA8910 /* LICENSE.txt */,
 				49CB451F1A9F48B700482845 /* UICollectionViewEmptyState.podspec */,
+				49629DCB1A9F4FDF00BA8910 /* LICENSE.txt */,
 			);
 			sourceTree = "<group>";
 		};

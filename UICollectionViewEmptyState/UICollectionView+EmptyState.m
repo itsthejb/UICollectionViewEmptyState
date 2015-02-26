@@ -109,7 +109,7 @@ SYNTHESIZE_ASC_OBJ_BLOCK(emptyState_view,
 
       if ([self.delegate respondsToSelector:@selector(collectionView:layout:referenceSizeForHeaderInSection:)]) {
         headerSize = [(id <UICollectionViewDelegateFlowLayout>) self.delegate
-                      collectionView:self.collectionViewLayout
+                      collectionView:self
                       layout:layout
                       referenceSizeForHeaderInSection:0];
       }
