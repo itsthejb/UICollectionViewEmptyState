@@ -149,7 +149,7 @@
                     <nil key="highlightedColor"/>
                     <color key="shadowColor" red="0.078431375319999996" green="0.1019607931" blue="0.14901961389999999" alpha="0.5" colorSpace="deviceRGB"/>
                 </label>
-                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="Y1M-tf-jAU" userLabel="Top Toolbar Bar">
+                <toolbar opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="black" id="Y1M-tf-jAU" userLabel="Top Toolbar Bar" customClass="DemoToolbar">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -182,15 +182,17 @@
             <objects>
                 <navigationController toolbarHidden="NO" id="4NH-1v-4UZ" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="lMs-Ys-3c5">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="lMs-Ys-3c5">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.15686275064945221" green="0.22745098173618317" blue="0.30196079611778259" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
-                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="black" id="uN1-KH-q6i">
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="uN1-KH-q6i">
                         <rect key="frame" x="0.0" y="524" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.68627452850341797" green="0.7137255072593689" blue="0.73333334922790527" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.15686275059999999" green="0.2274509817" blue="0.30196079609999998" alpha="1" colorSpace="calibratedRGB"/>
                     </toolbar>
                     <connections>
                         <segue destination="tnQ-uP-aXa" kind="relationship" relationship="rootViewController" id="lUG-vJ-gjp"/>

@@ -18,6 +18,7 @@
 		495CB7F11A9F17A0000E3F2F /* DemoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 495CB7EE1A9F17A0000E3F2F /* DemoController.m */; };
 		495CB7F51A9F17C0000E3F2F /* SpecClasses.m in Sources */ = {isa = PBXBuildFile; fileRef = 495CB7F31A9F17C0000E3F2F /* SpecClasses.m */; };
 		495CB7F61A9F17C0000E3F2F /* Specs.m in Sources */ = {isa = PBXBuildFile; fileRef = 495CB7F41A9F17C0000E3F2F /* Specs.m */; };
+		49629DCA1A9F4E6300BA8910 /* DemoToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 49629DC91A9F4E6300BA8910 /* DemoToolbar.m */; };
 		49CB45201A9F48B700482845 /* UICollectionViewEmptyState.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 49CB451F1A9F48B700482845 /* UICollectionViewEmptyState.podspec */; };
 		77BAF4A1FFC009771690482A /* libPods-Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DEEFB41971A53A1E5CF19A2A /* libPods-Tests.a */; };
 /* End PBXBuildFile section */
@@ -53,6 +54,10 @@
 		495CB7F31A9F17C0000E3F2F /* SpecClasses.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpecClasses.m; sourceTree = "<group>"; };
 		495CB7F41A9F17C0000E3F2F /* Specs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Specs.m; sourceTree = "<group>"; };
 		495CB7F71A9F17E0000E3F2F /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		49629DC81A9F4E6300BA8910 /* DemoToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoToolbar.h; sourceTree = "<group>"; };
+		49629DC91A9F4E6300BA8910 /* DemoToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoToolbar.m; sourceTree = "<group>"; };
+		49629DCB1A9F4FDF00BA8910 /* LICENSE.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
+		49629DCC1A9F4FDF00BA8910 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		49CB451F1A9F48B700482845 /* UICollectionViewEmptyState.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = UICollectionViewEmptyState.podspec; sourceTree = "<group>"; };
 		6876F2AF094F34EAA3A09B1C /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		7EAD746923C1B8F6D538310B /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -102,6 +107,8 @@
 				495CB7B91A9F15C7000E3F2F /* Products */,
 				1C12949592D0142D6F716EF6 /* Pods */,
 				FD7FD80B3C1E98E7609F9A54 /* Frameworks */,
+				49629DCB1A9F4FDF00BA8910 /* LICENSE.txt */,
+				49629DCC1A9F4FDF00BA8910 /* README.md */,
 			);
 			sourceTree = "<group>";
 		};
@@ -123,6 +130,8 @@
 				495CB7EC1A9F17A0000E3F2F /* DemoCell.m */,
 				495CB7ED1A9F17A0000E3F2F /* DemoController.h */,
 				495CB7EE1A9F17A0000E3F2F /* DemoController.m */,
+				49629DC81A9F4E6300BA8910 /* DemoToolbar.h */,
+				49629DC91A9F4E6300BA8910 /* DemoToolbar.m */,
 				495CB7E61A9F1799000E3F2F /* MainStoryboard.storyboard */,
 				492127821A9F3D410047AE73 /* Launch Screen.xib */,
 				495CB7E11A9F172B000E3F2F /* Media.xcassets */,
@@ -341,6 +350,7 @@
 				495CB7F11A9F17A0000E3F2F /* DemoController.m in Sources */,
 				495CB7BE1A9F15C7000E3F2F /* main.m in Sources */,
 				495CB7F01A9F17A0000E3F2F /* DemoCell.m in Sources */,
+				49629DCA1A9F4E6300BA8910 /* DemoToolbar.m in Sources */,
 				495CB7EF1A9F17A0000E3F2F /* DemoAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

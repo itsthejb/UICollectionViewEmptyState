@@ -26,8 +26,12 @@
 - (void)viewDidLoad {
   [super viewDidLoad];
 
-  self.navigationItem.titleView = self.topToolbar;
   self.collectionView.emptyState_delegate = self;
+
+  self.navigationItem.titleView = self.topToolbar;
+  [self.topToolbar setBackgroundImage:[[UIImage alloc] init]
+                   forToolbarPosition:UIBarPositionAny
+                           barMetrics:UIBarMetricsDefault];
 
   [@[self.sectionStepper, self.itemStepper, self.headerSwitch]
    enumerateObjectsUsingBlock:^(UIControl *control, NSUInteger idx, BOOL *stop) {
