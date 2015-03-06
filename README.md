@@ -21,54 +21,60 @@ Want to display an arbitrary `UIView` on your `UICollectionView` when in an *emp
 
 * The overlay does not rotate terribly well at this time.
 
+
 ##What's new
 
- * 1.2.1
-	* Fixed an incorrect pointer bug.
-* 1.2.0
-	* Proper overhaul with recreated project. No more test suite demons.
-	* `will~` delegate methods are now called from within animation blocks.
-  * Better sizing when respecting the collection's first section header. Takes account of header sizing for the layout *and* delegate. Does not access the actual header view at all.
-	* Demo is prettier and more functional.
-	* Tidying up podspec dependencies.
+###1.3.0
+* Changed *swizzling* solution to [Aspects](https://github.com/steipete/Aspects), in order to only swizzle `-layoutSubviews` for `UICollectionView` instances with an empty state view set.
+* Improved some other property and layout logic, including in the demo.
 
-* 1.1.0
-  * Much-needed spring clean.
-  * Properly respects the collection view's `contentInsets` for better iOS 7 compatibility.
-  * Accesses the collection view's section 0 header view directly for more robust layout with `emptyState_shouldRespectSectionHeader`.
-  * Scrolling of the collection view is now disabled when the overlay is visible.
-  * Scrolls the collection back to the top when the overlay is presented.
+###1.2.1
+* Fixed an incorrect pointer bug.
 
-* 1.0.9
-  * Dependency updates.
+###1.2.0
+* Proper overhaul with recreated project. No more test suite demons.
+* `will~` delegate methods are now called from within animation blocks.
+* Better sizing when respecting the collection's first section header. Takes account of header sizing for the layout *and* delegate. Does not access the actual header view at all.
+* Demo is prettier and more functional.
+* Tidying up podspec dependencies.
 
-* 1.0.8
-  * Updated depedencies for changes in `libextobjc`.
+###1.1.0
+* Much-needed spring clean.
+* Properly respects the collection view's `contentInsets` for better iOS 7 compatibility.
+* Accesses the collection view's section 0 header view directly for more robust layout with `emptyState_shouldRespectSectionHeader`.
+* Scrolling of the collection view is now disabled when the overlay is visible.
+* Scrolls the collection back to the top when the overlay is presented.
 
-* 1.0.7
-  * Fixed missing QuartzCore import.
+###1.0.9
+* Dependency updates.
 
-* 1.0.6
-  * Checks the animation keys for the `emptyState_view` explicitly so should protect against multiple nested add/remove operations and generally smoother operation.
+###1.0.8
+* Updated depedencies for changes in `libextobjc`.
 
-* 1.0.5
-  * Added `emptyState_showDelay` and `emptyState_hideDelay` properties to add a delay to show/hide of the overlay.
-  * Possibly fixed a retain cycle-related crash issue.
-  * Test target currently broken and no time to fix... :(
+###1.0.7
+* Fixed missing QuartzCore import.
 
-* 1.0.3
-  * Dependency updates.
+###1.0.6
+* Checks the animation keys for the `emptyState_view` explicitly so should protect against multiple nested add/remove operations and generally smoother operation.
 
-* 1.0.2
-  * Fixed dependency error.
+###1.0.5
+* Added `emptyState_showDelay` and `emptyState_hideDelay` properties to add a delay to show/hide of the overlay.
+* Possibly fixed a retain cycle-related crash issue.
+* Test target currently broken and no time to fix... :(
 
-* 1.0.1
-	* Tidying of methods.
-	* Existing empty views are always removed when a new view is set. Allows for more dynamic changing of empty state views. 
+###1.0.3
+* Dependency updates.
 
-* 1.0.0
-	* Added `UICollectionViewEmptyStateDelegate` protocol.
-	* Added `setEmptyStateImageViewWithImage:`.
+###1.0.2
+* Fixed dependency error.
+
+###1.0.1
+* Tidying of methods.
+* Existing empty views are always removed when a new view is set. Allows for more dynamic changing of empty state views. 
+
+###1.0.0
+* Added `UICollectionViewEmptyStateDelegate` protocol.
+* Added `setEmptyStateImageViewWithImage:`.
 * 0.0.1 - Initial release
 
  

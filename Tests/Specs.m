@@ -30,6 +30,10 @@ describe(@"simple case", ^{
   };
 
   beforeAll(^{
+    [UIView setAnimationsEnabled:NO];
+  });
+
+  beforeEach(^{
     controller = [[SpecCollectionController alloc]
                   initWithCollectionViewLayout:[[UICollectionViewFlowLayout alloc] init]];
 

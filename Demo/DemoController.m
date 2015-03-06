@@ -44,7 +44,7 @@
     [self.respectHeaderSwitch bk_addEventHandler:^(id sender) {
       self.collectionView.emptyState_shouldRespectSectionHeader =
       !self.collectionView.emptyState_shouldRespectSectionHeader;
-      [self.collectionView reloadData];
+      [self.collectionView.collectionViewLayout invalidateLayout];
     } forControlEvents:UIControlEventValueChanged];
 
     [self.insetsSwitch bk_addEventHandler:^(id sender) {
@@ -89,7 +89,6 @@
   self.collectionView.emptyState_view = self.emptyView;
   self.collectionView.emptyState_showAnimationDuration = 0.3;
   self.collectionView.emptyState_hideAnimationDuration = 0.3;
-  self.collectionView.emptyState_shouldRespectSectionHeader = YES;
 }
 
 #pragma mark Datasource
@@ -167,16 +166,14 @@
 willAddEmptyStateOverlayView:(UIView *)view
                   animated:(BOOL)animated
 {
-  self.topToolbar.userInteractionEnabled = NO;
-  self.topToolbar.alpha = 0.25;
+  NSLog(@"Will add empty view %@", view);
 }
 
 - (void)				collectionView:(UICollectionView *)collectionView
 willRemoveEmptyStateOverlayView:(UIView *)view
                   animated:(BOOL)animated
 {
-  self.topToolbar.userInteractionEnabled = YES;
-  self.topToolbar.alpha = 1.0;
+  NSLog(@"Will remove empty view %@", view);
 }
 
 @end

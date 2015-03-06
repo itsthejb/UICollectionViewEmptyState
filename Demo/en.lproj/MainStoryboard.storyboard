@@ -163,9 +163,9 @@
                             </switch>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="nGu-MJ-5S3"/>
-                        <barButtonItem title="Respect Header:" id="kzm-aS-Y4U" userLabel="Header Title"/>
-                        <barButtonItem style="plain" id="9L3-cw-6Bw" userLabel="Header Switch">
-                            <switch key="customView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="6I4-Wu-bWX">
+                        <barButtonItem title="Respect Header:" id="kzm-aS-Y4U" userLabel="Respect Header Title"/>
+                        <barButtonItem style="plain" id="9L3-cw-6Bw" userLabel="Respect Header Switch">
+                            <switch key="customView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="6I4-Wu-bWX">
                                 <rect key="frame" x="-25" y="-15" width="51" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="onTintColor" red="0.1411764771" green="0.63529413940000001" blue="0.3058823645" alpha="1" colorSpace="calibratedRGB"/>
