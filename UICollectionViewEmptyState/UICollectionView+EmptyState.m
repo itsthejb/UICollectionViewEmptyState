@@ -24,13 +24,13 @@
 //  SOFTWARE.
 
 #import <QuartzCore/QuartzCore.h>
+#import <Aspects/Aspects.h>
 #import "UICollectionView+EmptyState.h"
 #import "ObjcAssociatedObjectHelpers.h"
-#import "JRSwizzle.h"
 
 @interface UICollectionView (EmptyStatePrivate)
+@property (nonatomic, strong) id <AspectToken> __empty_swizzleToken;
 - (void) __empty_layoutSubviews;
-- (void) __empty_layoutSubviews_original;
 - (void) __empty_layoutAddViewItems:(NSUInteger) items
                             section:(NSUInteger) sections;
 - (void) __empty_layoutRemoveView;
@@ -52,34 +52,40 @@ SYNTHESIZE_ASC_PRIMITIVE(emptyState_showDelay,
 SYNTHESIZE_ASC_PRIMITIVE(emptyState_hideDelay,
                          setEmptyState_hideDelay,
                          NSTimeInterval)
+SYNTHESIZE_ASC_OBJ(__empty_swizzleToken, set__empty_swizzleToken)
 SYNTHESIZE_ASC_PRIMITIVE_BLOCK(emptyState_shouldRespectSectionHeader,
                                setEmptyState_shouldRespectSectionHeader,
                                BOOL,
-                               ^{},
-                               ^{ [self reloadData]; })
+                               ^(BOOL v) { return v; },
+                               ^(BOOL v) { [self reloadData]; return v; })
 SYNTHESIZE_ASC_OBJ_BLOCK(emptyState_view,
                          setEmptyState_view,
-                         ^{},
-                         ^
+                         ^(id v) { return v; },
+                         ^(id v)
 {
-  static BOOL __segue_swizzled = NO;
-  if (!__segue_swizzled) {
+  if (v && !self.__empty_swizzleToken) {
     NSError *e = nil;
-    [UICollectionView jr_swizzleMethod:@selector(layoutSubviews)
-                            withMethod:@selector(__empty_layoutSubviews)
-                                 error:&e];
+    self.__empty_swizzleToken = [self aspect_hookSelector:@selector(layoutSubviews)
+                                              withOptions:AspectPositionAfter
+                                               usingBlock:^
+                                 {
+                                   [self __empty_layoutSubviews];
+                                 } error:&e];
     NSAssert(!e, e.localizedDescription);
-    __segue_swizzled = YES;
   }
+
+  else if (!v && self.__empty_swizzleToken) {
+    [self.__empty_swizzleToken remove];
+    self.__empty_swizzleToken = nil;
+  }
+
   // remove any existing view
   [self.emptyState_view removeFromSuperview];
+
+  return v;
 });
 
 - (void) __empty_layoutSubviews {
-  [self __empty_layoutSubviews];
-
-  CGRect bounds = self.bounds;
-
   NSUInteger totalItems = 0;
   NSUInteger numberOfSections = 1;
   if ([self.dataSource respondsToSelector:@selector(numberOfSectionsInCollectionView:)]) {
@@ -90,38 +96,6 @@ SYNTHESIZE_ASC_OBJ_BLOCK(emptyState_view,
     totalItems += [self.dataSource collectionView:self numberOfItemsInSection:section];
   }
 
-  // section header respect requires UICollectionViewDelegateFlowLayout right now...
-  if (self.emptyState_view && self.emptyState_shouldRespectSectionHeader) {
-    UICollectionViewFlowLayout *layout = (id) self.collectionViewLayout;
-    NSAssert2([layout isKindOfClass:[UICollectionViewFlowLayout class]],
-              @"Only compatible with %@ when emptyState_shouldRespectSectionHeader = YES." \
-              " Cannot be used with %@",
-              NSStringFromClass([UICollectionViewFlowLayout class]),
-              NSStringFromClass([self.collectionViewLayout class]));
-
-
-    // is there actually a header to be displayed?
-    if (numberOfSections &&
-        [self.dataSource
-         respondsToSelector:@selector(collectionView:viewForSupplementaryElementOfKind:atIndexPath:)])
-    {
-      CGSize headerSize = layout.headerReferenceSize;
-
-      if ([self.delegate respondsToSelector:@selector(collectionView:layout:referenceSizeForHeaderInSection:)]) {
-        headerSize = [(id <UICollectionViewDelegateFlowLayout>) self.delegate
-                      collectionView:self
-                      layout:layout
-                      referenceSizeForHeaderInSection:0];
-      }
-
-      CGRect slice;
-      CGRectDivide(bounds, &slice, &bounds, headerSize.height, CGRectMinYEdge);
-    }
-  }
-
-  // always update frame
-  self.emptyState_view.frame = UIEdgeInsetsInsetRect(bounds, self.contentInset);
-
   // view may already be animating
   BOOL animating = [self.emptyState_view.layer.animationKeys containsObject:@"opacity"];
 
@@ -131,7 +105,8 @@ SYNTHESIZE_ASC_OBJ_BLOCK(emptyState_view,
       [self __empty_layoutRemoveView];
     }
   } else {
-    if (!self.emptyState_view.superview && !animating) {
+    // add
+    if (self.emptyState_view && self.emptyState_view.superview != self && !animating) {
       [self __empty_layoutAddViewItems:totalItems section:numberOfSections];
     }
   }
@@ -142,6 +117,39 @@ SYNTHESIZE_ASC_OBJ_BLOCK(emptyState_view,
 {
   // add view
   if (self.emptyState_view.superview != self) {
+    CGRect bounds = self.bounds;
+
+    // section header respect requires UICollectionViewDelegateFlowLayout right now...
+    if (self.emptyState_view && self.emptyState_shouldRespectSectionHeader) {
+      UICollectionViewFlowLayout *layout = (id) self.collectionViewLayout;
+      NSAssert2([layout isKindOfClass:[UICollectionViewFlowLayout class]],
+                @"Only compatible with %@ when emptyState_shouldRespectSectionHeader = YES." \
+                " Cannot be used with %@",
+                NSStringFromClass([UICollectionViewFlowLayout class]),
+                NSStringFromClass([self.collectionViewLayout class]));
+
+
+      // is there actually a header to be displayed?
+      if (numberOfSections &&
+          [self.dataSource
+           respondsToSelector:@selector(collectionView:viewForSupplementaryElementOfKind:atIndexPath:)])
+      {
+        CGSize headerSize = layout.headerReferenceSize;
+
+        if ([self.delegate respondsToSelector:@selector(collectionView:layout:referenceSizeForHeaderInSection:)]) {
+          headerSize = [(id <UICollectionViewDelegateFlowLayout>) self.delegate
+                        collectionView:self
+                        layout:layout
+                        referenceSizeForHeaderInSection:0];
+        }
+
+        CGRect slice;
+        CGRectDivide(bounds, &slice, &bounds, headerSize.height, CGRectMinYEdge);
+      }
+    }
+
+    // always update frame
+    self.emptyState_view.frame = UIEdgeInsetsInsetRect(bounds, self.contentInset);
 
     // not visible, add
     self.emptyState_view.alpha = 0.0;
