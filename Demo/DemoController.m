@@ -167,16 +167,14 @@
 willAddEmptyStateOverlayView:(UIView *)view
                   animated:(BOOL)animated
 {
-  self.topToolbar.userInteractionEnabled = NO;
-  self.topToolbar.alpha = 0.25;
+  NSLog(@"Will add empty view %@", view);
 }
 
 - (void)				collectionView:(UICollectionView *)collectionView
 willRemoveEmptyStateOverlayView:(UIView *)view
                   animated:(BOOL)animated
 {
-  self.topToolbar.userInteractionEnabled = YES;
-  self.topToolbar.alpha = 1.0;
+  NSLog(@"Will remove empty view %@", view);
 }
 
 @end
