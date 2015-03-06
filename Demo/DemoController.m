@@ -89,7 +89,6 @@
   self.collectionView.emptyState_view = self.emptyView;
   self.collectionView.emptyState_showAnimationDuration = 0.3;
   self.collectionView.emptyState_hideAnimationDuration = 0.3;
-  self.collectionView.emptyState_shouldRespectSectionHeader = YES;
 }
 
 #pragma mark Datasource
