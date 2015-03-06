@@ -44,7 +44,7 @@
     [self.respectHeaderSwitch bk_addEventHandler:^(id sender) {
       self.collectionView.emptyState_shouldRespectSectionHeader =
       !self.collectionView.emptyState_shouldRespectSectionHeader;
-      [self.collectionView reloadData];
+      [self.collectionView.collectionViewLayout invalidateLayout];
     } forControlEvents:UIControlEventValueChanged];
 
     [self.insetsSwitch bk_addEventHandler:^(id sender) {
