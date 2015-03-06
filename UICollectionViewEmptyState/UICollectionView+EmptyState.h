@@ -41,6 +41,8 @@
  this header. Note that no supplementary views are displayed
  on a collection view at all if numberOfSectionsInCollectionView
  is 0.
+ @note If you'd like to update this property at runtime, you must
+ reload the collection view or invalidate its layout.
  */
 @property (nonatomic, assign) BOOL emptyState_shouldRespectSectionHeader;
 
