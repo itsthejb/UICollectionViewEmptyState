@@ -57,13 +57,13 @@ SYNTHESIZE_ASC_PRIMITIVE_BLOCK(emptyState_shouldRespectSectionHeader,
                                setEmptyState_shouldRespectSectionHeader,
                                BOOL,
                                ^(BOOL v) { return v; },
-                               ^(BOOL v) { [self reloadData]; return v; })
+                               ^(BOOL v) { return v; })
 SYNTHESIZE_ASC_OBJ_BLOCK(emptyState_view,
                          setEmptyState_view,
-                         ^(id v) { return v; },
-                         ^(id v)
+                         ^(UIView *view) { return view; },
+                         ^(UIView *view)
 {
-  if (v && !self.__empty_swizzleToken) {
+  if (view && !self.__empty_swizzleToken) {
     NSError *e = nil;
     self.__empty_swizzleToken = [self aspect_hookSelector:@selector(layoutSubviews)
                                               withOptions:AspectPositionAfter
@@ -74,7 +74,7 @@ SYNTHESIZE_ASC_OBJ_BLOCK(emptyState_view,
     NSAssert(!e, e.localizedDescription);
   }
 
-  else if (!v && self.__empty_swizzleToken) {
+  else if (!view && self.__empty_swizzleToken) {
     [self.__empty_swizzleToken remove];
     self.__empty_swizzleToken = nil;
   }
