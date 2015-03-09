@@ -24,6 +24,9 @@ Want to display an arbitrary `UIView` on your `UICollectionView` when in an *emp
 
 ##What's new
 
+###1.3.1
+ * Permit Autolayout, by removing call to `-setTranslatesAutoresizingMaskIntoConstraints:`.
+
 ###1.3.0
 * Changed *swizzling* solution to [Aspects](https://github.com/steipete/Aspects), in order to only swizzle `-layoutSubviews` for `UICollectionView` instances with an empty state view set.
 * Improved some other property and layout logic, including in the demo.
