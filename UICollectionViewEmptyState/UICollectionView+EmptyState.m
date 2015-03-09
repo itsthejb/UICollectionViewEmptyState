@@ -84,7 +84,6 @@ SYNTHESIZE_ASC_OBJ_BLOCK(emptyState_view,
   // remove any existing view
   [self.emptyState_view removeFromSuperview];
 
-  view.translatesAutoresizingMaskIntoConstraints = NO;
   return view;
 });
 
