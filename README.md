@@ -24,7 +24,7 @@ Want to display an arbitrary `UIView` on your `UICollectionView` when in an *emp
 
 ##What's new
 
-###1.4.0
+###1.4.1
 * Added new delegate method that allows modification of the proposed overlay frame.
 
 ###1.3.1
