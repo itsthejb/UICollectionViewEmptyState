@@ -164,7 +164,7 @@ SYNTHESIZE_ASC_OBJ_BLOCK(emptyState_view,
   {
     rect = [self.emptyState_delegate collectionView:self
                                        willSetFrame:rect
-                           forEmptyStateOverlayView:self.emptyState_delegate];
+                           forEmptyStateOverlayView:self.emptyState_view];
   }
 
   self.emptyState_view.frame = rect;
