@@ -163,17 +163,25 @@
 #pragma mark Empty state delegate
 
 - (void)				collectionView:(UICollectionView *)collectionView
-willAddEmptyStateOverlayView:(UIView *)view
-                  animated:(BOOL)animated
+	willAddEmptyStateOverlayView:(UIView *)view
+  		                animated:(BOOL)animated
 {
-  NSLog(@"Will add empty view %@", view);
+  NSLog(@"%@:%@", NSStringFromSelector(_cmd), view);
 }
 
-- (void)				collectionView:(UICollectionView *)collectionView
+- (void)				 collectionView:(UICollectionView *)collectionView
 willRemoveEmptyStateOverlayView:(UIView *)view
-                  animated:(BOOL)animated
+                 			 animated:(BOOL)animated
 {
-  NSLog(@"Will remove empty view %@", view);
+  NSLog(@"%@:%@", NSStringFromSelector(_cmd), view);
+}
+
+- (CGRect) collectionView:(UICollectionView*) collectionView
+             willSetFrame:(CGRect) proposed
+ forEmptyStateOverlayView:(UIView*) view
+{
+  NSLog(@"%@:%@", NSStringFromSelector(_cmd), view);
+  return proposed;
 }
 
 @end
