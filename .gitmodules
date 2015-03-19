@@ -1,6 +1,0 @@
-[submodule "ObjcAssociatedObjectHelpers"]
-	path = ObjcAssociatedObjectHelpers
-	url = https://github.com/itsthejb/ObjcAssociatedObjectHelpers
-[submodule "jrswizzle"]
-	path = jrswizzle
-	url = https://github.com/rentzsch/jrswizzle
