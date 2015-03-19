@@ -63,6 +63,16 @@
 {
 	self.didReceiveWillRemoveCallBack = YES;
 }
+- (CGRect)collectionView:(UICollectionView *)collectionView
+            willSetFrame:(CGRect)proposed
+forEmptyStateOverlayView:(UIView *)view
+{
+  self.didReceiveFrameSetCallBack = YES;
+  if (self.shouldModifyFrameInSetDelegateMethod) {
+    return CGRectMake(10, 20, 30, 40);
+  }
+  return proposed;
+}
 @end
 
 #pragma mark -

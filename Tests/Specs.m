@@ -51,7 +51,7 @@ describe(@"simple case", ^{
   it(@"should be set up correctly for testing", ^{
     expect(layout()).to.beInstanceOf([UICollectionViewFlowLayout class]);
     expect(controller.collectionView.emptyState_view).to.equal(emptyView());
-    expect(controller.isViewLoaded).to.beTruthy;
+    expect(controller.isViewLoaded).to.beTruthy();
   });
 
   it(@"should not display overlay with content", ^{
@@ -84,38 +84,49 @@ describe(@"simple case", ^{
     UICollectionReusableView *headerView = [controller collectionView:controller.collectionView
                                     viewForSupplementaryElementOfKind:UICollectionElementKindSectionHeader
                                                           atIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]];
-    expect(CGRectIntersectsRect(headerView.frame, emptyView().frame)).to.beFalsy;
+    expect(CGRectIntersectsRect(headerView.frame, emptyView().frame)).to.beFalsy();
   });
 
   it(@"should call delegate methods", ^{
     controller.collectionView.emptyState_delegate = callbacks;
-    callbacks.didReceiveWillRemoveCallBack = NO;
-    callbacks.didReceiveWillAddCallBack = NO;
-    callbacks.didReceiveDidAddCallBack = NO;
-    callbacks.didReceiveDidRemoveCallBack = NO;
+    callbacks.didReceiveWillRemoveCallBack =
+    callbacks.didReceiveWillAddCallBack =
+    callbacks.didReceiveDidAddCallBack =
+    callbacks.didReceiveDidRemoveCallBack =
+    callbacks.didReceiveFrameSetCallBack = NO;
+    callbacks.shouldModifyFrameInSetDelegateMethod = YES;
+    expect(CGRectEqualToRect(controller.collectionView.emptyState_view.frame, CGRectZero)).to.beTruthy();
 
     controller.numberOfSectionItems = 0;
     controller.numberOfSections = 0;
     [controller.collectionView layoutSubviews];
 
-    expect(callbacks.didReceiveWillAddCallBack).to.beTruthy;
-    expect(callbacks.didReceiveWillRemoveCallBack).to.beTruthy;
-    expect(callbacks.didReceiveDidAddCallBack).to.beFalsy;
-    expect(callbacks.didReceiveDidRemoveCallBack).to.beFalsy;
+    expect(callbacks.didReceiveWillAddCallBack).to.beTruthy();
+    expect(callbacks.didReceiveWillRemoveCallBack).to.beFalsy();
+    expect(callbacks.didReceiveDidAddCallBack).to.beFalsy();
+    expect(callbacks.didReceiveDidRemoveCallBack).to.beFalsy();
+    expect(callbacks.didReceiveFrameSetCallBack).to.beTruthy();
+    expect(CGRectEqualToRect(controller.collectionView.emptyState_view.frame,
+                             CGRectMake(10, 20, 30, 40))).to.beTruthy();
 
-    callbacks.didReceiveWillRemoveCallBack = NO;
-    callbacks.didReceiveWillAddCallBack = NO;
-    callbacks.didReceiveDidAddCallBack = NO;
-    callbacks.didReceiveDidRemoveCallBack = NO;
+    callbacks.didReceiveWillRemoveCallBack =
+    callbacks.didReceiveWillAddCallBack =
+    callbacks.didReceiveDidAddCallBack =
+    callbacks.didReceiveDidRemoveCallBack =
+    callbacks.didReceiveFrameSetCallBack = NO;
+    callbacks.shouldModifyFrameInSetDelegateMethod = NO;
 
     controller.numberOfSectionItems = 10;
     controller.numberOfSections = 10;
     [controller.collectionView layoutSubviews];
 
-    expect(callbacks.didReceiveWillAddCallBack).to.beFalsy;
-    expect(callbacks.didReceiveWillRemoveCallBack).to.beFalsy;
-    expect(callbacks.didReceiveDidAddCallBack).to.beTruthy;
-    expect(callbacks.didReceiveDidRemoveCallBack).to.beTruthy;
+    expect(callbacks.didReceiveWillAddCallBack).to.beFalsy();
+    expect(callbacks.didReceiveWillRemoveCallBack).to.beTruthy();
+    expect(callbacks.didReceiveDidAddCallBack).to.beFalsy();
+    expect(callbacks.didReceiveDidRemoveCallBack).to.beFalsy();
+    expect(callbacks.didReceiveFrameSetCallBack).to.beTruthy();
+    expect(CGRectEqualToRect(controller.collectionView.emptyState_view.frame,
+                             controller.collectionView.frame)).to.beTruthy();
   });
 });
 

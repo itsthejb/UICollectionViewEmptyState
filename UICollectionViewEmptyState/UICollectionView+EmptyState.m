@@ -158,7 +158,16 @@ SYNTHESIZE_ASC_OBJ_BLOCK(emptyState_view,
   }
 
   // always update frame
-  self.emptyState_view.frame = UIEdgeInsetsInsetRect(bounds, self.contentInset);
+  CGRect rect = UIEdgeInsetsInsetRect(bounds, self.contentInset);
+  if ([self.emptyState_delegate respondsToSelector:
+       @selector(collectionView:willSetFrame:forEmptyStateOverlayView:)])
+  {
+    rect = [self.emptyState_delegate collectionView:self
+                                       willSetFrame:rect
+                           forEmptyStateOverlayView:self.emptyState_delegate];
+  }
+
+  self.emptyState_view.frame = rect;
 }
 
 - (void) __empty_layoutAddViewItems:(NSUInteger) totalItems

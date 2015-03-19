@@ -20,6 +20,8 @@
 @property (nonatomic, assign) BOOL didReceiveDidAddCallBack;
 @property (nonatomic, assign) BOOL didReceiveWillRemoveCallBack;
 @property (nonatomic, assign) BOOL didReceiveDidRemoveCallBack;
+@property (nonatomic, assign) BOOL didReceiveFrameSetCallBack;
+@property (nonatomic, assign) BOOL shouldModifyFrameInSetDelegateMethod;
 @end
 
 @interface SpecView : UIView

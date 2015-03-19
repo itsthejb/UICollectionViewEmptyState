@@ -98,4 +98,12 @@
  */
 - (void)          collectionView:(UICollectionView*) collectionView
   didRemoveEmptyStateOverlayView:(UIView*) view;
+
+/**
+ *  Called with the proposed frame for the empty state overlay.
+ *  @return A different frame if you wish to modify its value.
+ */
+- (CGRect) collectionView:(UICollectionView*) collectionView
+             willSetFrame:(CGRect) proposed
+ forEmptyStateOverlayView:(UIView*) view;
 @end
