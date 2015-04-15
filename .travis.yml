@@ -5,10 +5,8 @@ xcode_scheme: Tests
 
 before_install:
   - export LANG=en_US.UTF-8
-    
-before_install: 
-    - brew unlink xctool
-    - brew install xctool --HEAD
-    - gem install cocoapods
+  - brew unlink xctool
+  - brew install xctool --HEAD
+  - gem install cocoapods
 
 script: xctool -workspace UICollectionViewEmptyState.xcworkspace -scheme Tests -sdk iphonesimulator test
