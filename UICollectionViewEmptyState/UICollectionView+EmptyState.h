@@ -46,6 +46,14 @@
  */
 @property (nonatomic, assign) BOOL emptyState_shouldRespectSectionHeader;
 
+/**
+ If YES, will set the empty state view property to nil during
+ the next layout if it wasn't added. This is useful if the empty
+ view is rarely required, and you would prefer to unswizzle the
+ collection view to avoid unwanted side-effects.
+ */
+@property (nonatomic, assign) BOOL emptyState_shouldNilViewIfNotRequired;
+
 /** Fade in animation duration. 0.0 = no animation */
 @property (nonatomic, assign) NSTimeInterval emptyState_showAnimationDuration;
 
