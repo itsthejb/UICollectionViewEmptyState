@@ -58,8 +58,15 @@ describe(@"simple case", ^{
     controller.numberOfSectionItems = 10;
     controller.numberOfSections = 10;
     [controller.collectionView layoutSubviews];
-
     expect(emptyView().superview).toNot.equal(controller.collectionView);
+  });
+
+  it(@"should nil the empty view if not required", ^{
+    controller.collectionView.emptyState_shouldNilViewIfNotRequired = YES;
+    controller.numberOfSectionItems = 10;
+    controller.numberOfSections = 10;
+    [controller.collectionView layoutSubviews];
+    expect(controller.collectionView.emptyState_view).to.beNil();
   });
 
   it(@"should display overlay with no content, covering entire collection view", ^{

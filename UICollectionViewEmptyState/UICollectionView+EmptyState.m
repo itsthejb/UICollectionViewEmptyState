@@ -54,6 +54,9 @@ SYNTHESIZE_ASC_PRIMITIVE(emptyState_showDelay,
 SYNTHESIZE_ASC_PRIMITIVE(emptyState_hideDelay,
                          setEmptyState_hideDelay,
                          NSTimeInterval)
+SYNTHESIZE_ASC_PRIMITIVE(emptyState_shouldNilViewIfNotRequired,
+                         setEmptyState_shouldNilViewIfNotRequired,
+                         BOOL)
 SYNTHESIZE_ASC_OBJ(__empty_swizzleToken, set__empty_swizzleToken)
 SYNTHESIZE_ASC_PRIMITIVE_BLOCK(emptyState_shouldRespectSectionHeader,
                                setEmptyState_shouldRespectSectionHeader,
@@ -107,6 +110,11 @@ SYNTHESIZE_ASC_OBJ_BLOCK(emptyState_view,
     if (self.emptyState_view && self.emptyState_view.superview != self && !animating) {
       [self __empty_layoutAddViewItems:totalItems section:self.__empty_numberOfSections];
     }
+  }
+
+  // empty view not required, and remove immediately?
+  if (self.emptyState_shouldNilViewIfNotRequired && !self.emptyState_view.superview) {
+    self.emptyState_view = nil;
   }
 }
 
