@@ -24,7 +24,7 @@ Want to display an arbitrary `UIView` on your `UICollectionView` when in an *emp
 
 ##What's new
 
-###1.4.3
+###1.4.4
  * Added `shouldNilViewIfNotRequired` flag, to automatically `nil` the empty state view if it is not added as part of the next layout cycle.
  
 ###1.4.2

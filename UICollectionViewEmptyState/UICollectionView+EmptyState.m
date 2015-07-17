@@ -80,8 +80,7 @@ SYNTHESIZE_ASC_OBJ_BLOCK(emptyState_view,
   }
 
   else if (!view && self.__empty_swizzleToken) {
-    [self.__empty_swizzleToken remove];
-    self.__empty_swizzleToken = nil;
+    [self __empty_removeSwizzle];
   }
 
   // remove any existing view
@@ -92,6 +91,11 @@ SYNTHESIZE_ASC_OBJ_BLOCK(emptyState_view,
 
   return view;
 });
+
+- (void)__empty_removeSwizzle {
+  [self.__empty_swizzleToken remove];
+  self.__empty_swizzleToken = nil;
+}
 
 - (void) __empty_layoutSubviews {
   [self __empty_layoutHeader];
@@ -115,6 +119,7 @@ SYNTHESIZE_ASC_OBJ_BLOCK(emptyState_view,
   // empty view not required, and remove immediately?
   if (self.emptyState_shouldNilViewIfNotRequired && !self.emptyState_view.superview) {
     self.emptyState_view = nil;
+    [self __empty_removeSwizzle];
   }
 }
 
