@@ -11,6 +11,8 @@
 @implementation DemoToolbar
 
 - (void)awakeFromNib {
+  [super awakeFromNib];
+
   // #hacky, but this is a demo app, remember ;)
   [self.subviews enumerateObjectsUsingBlock:^(UIView *view, NSUInteger idx, BOOL *stop) {
     if ([view isKindOfClass:[UIImageView class]]) {

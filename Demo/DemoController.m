@@ -8,17 +8,10 @@
 
 #import "DemoController.h"
 #import "DemoCell.h"
-#import "BlocksKit+UIKit.h"
-#import "UICollectionView+EmptyState.h"
+#import <BlocksKit/BlocksKit+UIKit.h>
+#import <UICollectionViewEmptyState/UICollectionView+EmptyState.h>
 
 @interface DemoController () <UICollectionViewDelegateFlowLayout, UICollectionViewEmptyStateDelegate>
-@property (strong, nonatomic) IBOutlet UIStepper *sectionStepper;
-@property (strong, nonatomic) IBOutlet UIStepper *itemStepper;
-@property (strong, nonatomic) IBOutlet UILabel *emptyView;
-@property (strong, nonatomic) IBOutlet UISwitch *headerSwitch;
-@property (strong, nonatomic) IBOutlet UISwitch *respectHeaderSwitch;
-@property (strong, nonatomic) IBOutlet UISwitch *insetsSwitch;
-@property (strong, nonatomic) IBOutlet UIToolbar *topToolbar;
 @end
 
 @implementation DemoController
