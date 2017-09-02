@@ -1,12 +1,19 @@
 language: objective-c
+osx_image: xcode8.3
 
 xcode_workspace: UICollectionViewEmptyState.xcworkspace
 xcode_scheme: Tests
 
-before_install:
-  - export LANG=en_US.UTF-8
-  - brew unlink xctool
-  - brew install xctool --HEAD
-  - gem install cocoapods
+cache:
+  - bundler
+  - cocoapods
 
-script: xctool -workspace UICollectionViewEmptyState.xcworkspace -scheme Tests -sdk iphonesimulator test
+before_install:
+  - gem install bundler
+  - bundle install
+  - pod repo update
+  - pod install
+
+script:
+  - xcodebuild -workspace UICollectionViewEmptyState.xcworkspace -scheme Demo -destination 'platform=iOS Simulator,name=iPad Air,OS=10.3.1' build | xcpretty
+  - xcodebuild -workspace UICollectionViewEmptyState.xcworkspace -scheme Tests -destination 'platform=iOS Simulator,name=iPhone 6,OS=10.3.1' test | xcpretty
