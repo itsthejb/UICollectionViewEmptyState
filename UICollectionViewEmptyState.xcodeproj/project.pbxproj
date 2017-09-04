@@ -66,6 +66,7 @@
 		962757CFF0A74E892B6D8030 /* libPods-targets-Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-targets-Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B63AA44ED5BD1097AEFD5200 /* Pods-targets-Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-targets-Demo.release.xcconfig"; path = "Pods/Target Support Files/Pods-targets-Demo/Pods-targets-Demo.release.xcconfig"; sourceTree = "<group>"; };
 		E9C335D1C89C6715728C1B0B /* Pods-targets-Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-targets-Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-targets-Tests/Pods-targets-Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		FFF050E61F5D425E00085C91 /* .travis.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .travis.yml; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +119,7 @@
 				495CB7B91A9F15C7000E3F2F /* Products */,
 				3B63293D663663451BF7DD70 /* Frameworks */,
 				1C12949592D0142D6F716EF6 /* Pods */,
+				FFF050E61F5D425E00085C91 /* .travis.yml */,
 				49629DCC1A9F4FDF00BA8910 /* README.md */,
 				49629DCB1A9F4FDF00BA8910 /* LICENSE.txt */,
 			);
