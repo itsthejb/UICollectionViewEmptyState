@@ -174,7 +174,14 @@ SYNTHESIZE_ASC_OBJ_BLOCK(emptyState_view,
   }
 
   // always update frame
-  CGRect rect = UIEdgeInsetsInsetRect(bounds, self.contentInset);
+  CGRect rect;
+  NSProcessInfo *processInfo = [NSProcessInfo processInfo];
+  if ([processInfo respondsToSelector:@selector(operatingSystemVersion)] && processInfo.operatingSystemVersion.majorVersion >= 11) {
+    // UICollectionViews that have a top contentInset will have a negative bounds.origin.y in iOS11
+    rect = CGRectOffset(UIEdgeInsetsInsetRect(bounds, self.contentInset), 0, -bounds.origin.y);
+  } else {
+    rect = UIEdgeInsetsInsetRect(bounds, self.contentInset);
+  }
   if ([self.emptyState_delegate respondsToSelector:
        @selector(collectionView:willSetFrame:forEmptyStateOverlayView:)])
   {
