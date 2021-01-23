@@ -1,5 +1,5 @@
 language: objective-c
-osx_image: xcode8.3
+osx_image: xcode9
 
 xcode_workspace: UICollectionViewEmptyState.xcworkspace
 xcode_scheme: Tests
@@ -16,4 +16,6 @@ before_install:
 
 script:
   - xcodebuild -workspace UICollectionViewEmptyState.xcworkspace -scheme Demo -destination 'platform=iOS Simulator,name=iPad Air,OS=10.3.1' build | xcpretty
+  - xcodebuild -workspace UICollectionViewEmptyState.xcworkspace -scheme Tests -destination 'platform=iOS Simulator,name=iPhone 6,OS=8.1' test | xcpretty
   - xcodebuild -workspace UICollectionViewEmptyState.xcworkspace -scheme Tests -destination 'platform=iOS Simulator,name=iPhone 6,OS=10.3.1' test | xcpretty
+  - xcodebuild -workspace UICollectionViewEmptyState.xcworkspace -scheme Tests -destination 'platform=iOS Simulator,name=iPhone 6,OS=11.0' test | xcpretty
